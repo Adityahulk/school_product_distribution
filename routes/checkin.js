@@ -1,0 +1,80 @@
+'use strict';
+
+const express = require('express');
+const multer = require('multer');
+const path = require('path');
+const fs = require('fs');
+const db = require('../db');
+const { requireDriver } = require('../lib/auth');
+
+const router = express.Router();
+const UPLOAD_ROOT = path.join(__dirname, '..', 'uploads');
+
+const storage = multer.diskStorage({
+  destination(req, file, cb) {
+    const udise = (req.body.udise || 'unknown').replace(/[^0-9A-Za-z]/g, '');
+    const dir = path.join(UPLOAD_ROOT, udise);
+    fs.mkdirSync(dir, { recursive: true });
+    cb(null, dir);
+  },
+  filename(req, file, cb) {
+    const stamp = Date.now();
+    const ext = (path.extname(file.originalname) || '.jpg').toLowerCase();
+    cb(null, `${file.fieldname}_${req.user.id}_${stamp}${ext}`);
+  },
+});
+
+const upload = multer({
+  storage,
+  limits: { fileSize: 12 * 1024 * 1024 }, // 12 MB per photo
+  fileFilter(req, file, cb) {
+    if (/^image\//.test(file.mimetype)) cb(null, true);
+    else cb(new Error('only image uploads are allowed'));
+  },
+});
+
+// POST /api/checkin (multipart)
+// fields: udise, lat, lon ; files: school_photo, tables_photo
+router.post(
+  '/checkin',
+  requireDriver,
+  upload.fields([{ name: 'school_photo', maxCount: 1 }, { name: 'tables_photo', maxCount: 1 }]),
+  (req, res) => {
+    const { udise } = req.body;
+    const lat = parseFloat(req.body.lat);
+    const lon = parseFloat(req.body.lon);
+    const schoolFile = req.files && req.files.school_photo && req.files.school_photo[0];
+    const tablesFile = req.files && req.files.tables_photo && req.files.tables_photo[0];
+
+    const cleanup = () => {
+      [schoolFile, tablesFile].forEach((f) => { if (f) fs.unlink(f.path, () => {}); });
+    };
+
+    if (!udise) { cleanup(); return res.status(400).json({ error: 'udise required' }); }
+    if (!schoolFile || !tablesFile) { cleanup(); return res.status(400).json({ error: 'both school_photo and tables_photo are required' }); }
+
+    const school = db.prepare('SELECT udise FROM schools WHERE udise = ?').get(udise);
+    if (!school) { cleanup(); return res.status(404).json({ error: 'unknown school' }); }
+
+    const existing = db.prepare('SELECT id FROM visits WHERE udise = ?').get(udise);
+    if (existing) { cleanup(); return res.status(409).json({ error: 'school already marked visited' }); }
+
+    const rel = (f) => path.relative(UPLOAD_ROOT, f.path).split(path.sep).join('/');
+    try {
+      db.prepare(`
+        INSERT INTO visits (udise, driver_id, checkin_lat, checkin_lon, school_photo, tables_photo)
+        VALUES (?,?,?,?,?,?)
+      `).run(udise, req.user.id, Number.isFinite(lat) ? lat : null,
+             Number.isFinite(lon) ? lon : null, rel(schoolFile), rel(tablesFile));
+    } catch (e) {
+      cleanup();
+      // UNIQUE race: someone else just checked in.
+      if (String(e.message).includes('UNIQUE')) return res.status(409).json({ error: 'school already marked visited' });
+      throw e;
+    }
+
+    res.json({ ok: true, udise });
+  }
+);
+
+module.exports = router;

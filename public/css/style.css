@@ -1,0 +1,82 @@
+:root {
+  --bg: #0f1720;
+  --panel: #18222e;
+  --panel2: #1f2c3a;
+  --line: #2c3a4a;
+  --txt: #e8eef4;
+  --muted: #9bb0c3;
+  --accent: #2f80ed;
+  --green: #27ae60;
+  --amber: #f2994a;
+  --red: #eb5757;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body {
+  font-family: -apple-system, system-ui, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg); color: var(--txt); -webkit-text-size-adjust: 100%;
+}
+a { color: var(--accent); }
+button {
+  font: inherit; border: 0; border-radius: 10px; padding: 12px 16px;
+  background: var(--accent); color: #fff; font-weight: 600; cursor: pointer;
+}
+button.secondary { background: var(--panel2); color: var(--txt); border: 1px solid var(--line); }
+button.green { background: var(--green); }
+button:disabled { opacity: .5; cursor: default; }
+input {
+  font: inherit; width: 100%; padding: 12px; border-radius: 10px;
+  border: 1px solid var(--line); background: var(--panel2); color: var(--txt);
+}
+label { display: block; font-size: 13px; color: var(--muted); margin: 10px 0 4px; }
+
+/* Login */
+.center { min-height: 100%; display: grid; place-items: center; padding: 20px; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 24px; width: 100%; max-width: 360px; }
+.card h1 { font-size: 20px; margin: 0 0 4px; }
+.card p.sub { color: var(--muted); margin: 0 0 18px; font-size: 14px; }
+.err { color: var(--red); font-size: 13px; min-height: 18px; }
+
+/* Driver layout */
+.app { display: flex; flex-direction: column; height: 100%; }
+.topbar { display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: var(--panel); border-bottom: 1px solid var(--line); }
+.topbar .title { font-weight: 700; }
+.topbar .spacer { flex: 1; }
+.topbar .stat { font-size: 13px; color: var(--muted); }
+.topbar .stat b { color: var(--txt); }
+#map { flex: 1; min-height: 0; }
+.driver-bottom { background: var(--panel); border-top: 1px solid var(--line); padding: 14px; }
+.next-card .label { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .04em; }
+.next-card .nm { font-size: 18px; font-weight: 700; margin: 2px 0; }
+.next-card .meta { color: var(--muted); font-size: 13px; }
+.row { display: flex; gap: 10px; margin-top: 12px; }
+.row > * { flex: 1; }
+
+/* Admin layout */
+.admin { display: grid; grid-template-columns: 380px 1fr; height: 100%; }
+.sidebar { background: var(--panel); border-right: 1px solid var(--line); overflow-y: auto; padding: 16px; }
+.sidebar h2 { font-size: 15px; margin: 18px 0 8px; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+.kpis { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+.kpi { background: var(--panel2); border: 1px solid var(--line); border-radius: 12px; padding: 12px; text-align: center; }
+.kpi .v { font-size: 22px; font-weight: 800; }
+.kpi .k { font-size: 11px; color: var(--muted); }
+.driver-item { background: var(--panel2); border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; margin-bottom: 8px; }
+.driver-item .nm { font-weight: 700; }
+.driver-item .sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
+.pill { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 999px; background: var(--line); color: var(--txt); }
+.pill.on { background: var(--green); }
+.pill.off { background: var(--red); }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line); }
+.admin #map { height: 100%; }
+
+/* Modal */
+.modal-bg { position: fixed; inset: 0; background: rgba(0,0,0,.6); display: none; place-items: center; padding: 20px; z-index: 9999; }
+.modal-bg.show { display: grid; }
+.modal { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 20px; max-width: 520px; width: 100%; max-height: 90vh; overflow:auto; }
+.modal img { width: 100%; border-radius: 10px; margin-top: 6px; background: var(--panel2); }
+.modal h3 { margin: 0 0 4px; }
+
+.leaflet-popup-content { font-size: 13px; }
+.muted { color: var(--muted); }
+@media (max-width: 720px) { .admin { grid-template-columns: 1fr; } .admin #map { height: 50vh; } }

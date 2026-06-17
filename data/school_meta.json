@@ -1,0 +1,3882 @@
+{
+"20130313701": {
+"no": 1,
+"block": "CHAS",
+"name": "BASIC SCHOOL DABARTUPRA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130317501": {
+"no": 2,
+"block": "CHAS",
+"name": "PM SHRI RAJKIYAKRIT M S MARAFARI",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130326501": {
+"no": 3,
+"block": "CHAS",
+"name": "PM SHRI UPG RAJKIYAKRIT M S BHARRA URDU",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130329304": {
+"no": 4,
+"block": "CHAS",
+"name": "RAJKIYAKRIT ADARSH M S YODHADIH",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130312201": {
+"no": 5,
+"block": "CHAS",
+"name": "RAJKIYAKRIT M S BIJULIYA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130317601": {
+"no": 6,
+"block": "CHAS",
+"name": "RAJKIYAKRIT M S B.M.P-4",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130328604": {
+"no": 7,
+"block": "CHAS",
+"name": "RAJKIYAKRIT M S CHAS",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130314502": {
+"no": 8,
+"block": "CHAS",
+"name": "RAJKIYAKRIT M S DHANDABAR",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130300101": {
+"no": 9,
+"block": "CHAS",
+"name": "RAJKIYAKRIT M S GHATIYALI",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130319601": {
+"no": 10,
+"block": "CHAS",
+"name": "RAJKIYAKRIT M S GORABALI",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130311101": {
+"no": 11,
+"block": "CHAS",
+"name": "RAJKIYAKRIT M S HARIDIH",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130326901": {
+"no": 12,
+"block": "CHAS",
+"name": "RAJKIYAKRIT M S JAMGORIA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130304801": {
+"no": 13,
+"block": "CHAS",
+"name": "RAJKIYAKRIT M S KANDRA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130312701": {
+"no": 14,
+"block": "CHAS",
+"name": "RAJKIYAKRIT M S KHAMARBENDI",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130310501": {
+"no": 15,
+"block": "CHAS",
+"name": "RAJKIYAKRIT M S KURA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130306405": {
+"no": 16,
+"block": "CHAS",
+"name": "RAJKIYAKRIT M S KURMA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130320401": {
+"no": 17,
+"block": "CHAS",
+"name": "RAJKIYAKRIT M S LAKRAKHANDA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130314101": {
+"no": 18,
+"block": "CHAS",
+"name": "RAJKIYAKRIT M S PUNDRU",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130314901": {
+"no": 19,
+"block": "CHAS",
+"name": "RAJKIYAKRIT M S PUPUNAKI",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130320301": {
+"no": 20,
+"block": "CHAS",
+"name": "RAJKIYAKRIT M S RAILWAY",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130327002": {
+"no": 21,
+"block": "CHAS",
+"name": "RAJKIYAKRIT M S SALAGIDIH",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130307431": {
+"no": 22,
+"block": "CHAS",
+"name": "RAJKIYAKRIT M S SECTOR-2",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130319501": {
+"no": 23,
+"block": "CHAS",
+"name": "RAJKIYAKRIT M S SECTOR-4",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130310601": {
+"no": 24,
+"block": "CHAS",
+"name": "RAJKIYAKRIT M S SILFOR",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130310701": {
+"no": 25,
+"block": "CHAS",
+"name": "RAJKIYAKRIT M S TURIDIH",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130315402": {
+"no": 26,
+"block": "CHAS",
+"name": "UPG M S GOUSNAGAR",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130322101": {
+"no": 27,
+"block": "CHAS",
+"name": "UPG RAJKIYAKRIT M S AGARDIH (URDU)",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130302202": {
+"no": 28,
+"block": "CHAS",
+"name": "UPG RAJKIYAKRIT M S AMURAMU",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130328903": {
+"no": 29,
+"block": "CHAS",
+"name": "UPG RAJKIYAKRIT M S ASANSOL",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130317901": {
+"no": 30,
+"block": "CHAS",
+"name": "UPG RAJKIYAKRIT M S AZADNAGAR",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130313601": {
+"no": 31,
+"block": "CHAS",
+"name": "UPG RAJKIYAKRIT MS BABUDIH (URDU)",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130317401": {
+"no": 32,
+"block": "CHAS",
+"name": "UPG RAJKIYAKRIT M S BANSIMLI",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130313801": {
+"no": 33,
+"block": "CHAS",
+"name": "UPG RAJKIYAKRIT M S BARPOKHAR",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130316701": {
+"no": 34,
+"block": "CHAS",
+"name": "UPG RAJKIYAKRIT M S BARUDIH",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130315602": {
+"no": 35,
+"block": "CHAS",
+"name": "UPG RAJKIYAKRIT M S BASTEJI",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130327501": {
+"no": 36,
+"block": "CHAS",
+"name": "UPG RAJKIYAKRIT M S BAURITOLA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130308701": {
+"no": 37,
+"block": "CHAS",
+"name": "UPG RAJKIYAKRIT M S BELUNJA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130309501": {
+"no": 38,
+"block": "CHAS",
+"name": "UPG RAJKIYAKRIT M S BELUT",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130308101": {
+"no": 39,
+"block": "CHAS",
+"name": "UPG RAJKIYAKRIT M S BENDI",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130300201": {
+"no": 40,
+"block": "CHAS",
+"name": "UPG RAJKIYAKRIT M S BHANDARDIH CHAS 1",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130315101": {
+"no": 41,
+"block": "CHAS",
+"name": "UPG RAJKIYAKRIT M S BHANDRO (BALIKA)",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130309001": {
+"no": 42,
+"block": "CHAS",
+"name": "UPG RAJKIYAKRIT M S BHANGABANDH",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130305802": {
+"no": 43,
+"block": "CHAS",
+"name": "UPG RAJKIYAKRIT M S BHANGABAZAR CHAS-1",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130316301": {
+"no": 44,
+"block": "CHAS",
+"name": "UPG RAJKIYAKRIT M S BHATUA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130318601": {
+"no": 45,
+"block": "CHAS",
+"name": "UPG RAJKIYAKRIT M S BISUNPUR",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130308501": {
+"no": 46,
+"block": "CHAS",
+"name": "UPG RAJKIYAKRIT M S BUDHIBINOR",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130300501": {
+"no": 47,
+"block": "CHAS",
+"name": "UPG RAJKIYAKRIT M S CHAKULIYA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130309203": {
+"no": 48,
+"block": "CHAS",
+"name": "UPG RAJKIYAKRIT M S CHAMSOBAD (HARIJAN)",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130310301": {
+"no": 49,
+"block": "CHAS",
+"name": "UPG RAJKIYAKRIT M S CHANDAHA (URDU)",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130310702": {
+"no": 50,
+"block": "CHAS",
+"name": "UPG RAJKIYAKRIT M S CHAPATAND",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130327603": {
+"no": 51,
+"block": "CHAS",
+"name": "UPG RAJKIYAKRIT M S CHAS (URDU)",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130326702": {
+"no": 52,
+"block": "CHAS",
+"name": "UPG RAJKIYAKRIT M S CHIRACHAS",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130314801": {
+"no": 53,
+"block": "CHAS",
+"name": "UPG RAJKIYAKRIT M S DABAR BAHAL",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130314503": {
+"no": 54,
+"block": "CHAS",
+"name": "UPG RAJKIYAKRIT M S DHANDABRA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130314301": {
+"no": 55,
+"block": "CHAS",
+"name": "UPG RAJKIYAKRIT M S DHOBNI",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130311201": {
+"no": 56,
+"block": "CHAS",
+"name": "UPG RAJKIYAKRIT M S DUDHIGAJAR",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130308302": {
+"no": 57,
+"block": "CHAS",
+"name": "UPG RAJKIYAKRIT M S DUMARADA HINDI",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130308801": {
+"no": 58,
+"block": "CHAS",
+"name": "UPG RAJKIYAKRIT M S DUMARJOR",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130305303": {
+"no": 59,
+"block": "CHAS",
+"name": "UPG RAJKIYAKRIT M S DURGAPUR CHAS-2",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130303001": {
+"no": 60,
+"block": "CHAS",
+"name": "UPG RAJKIYAKRIT M S GOPALPUR CHAS-1",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130101801": {
+"no": 61,
+"block": "CHANDANKIYARI",
+"name": "RAJKIYAKRIT M S ALUARA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130103101": {
+"no": 62,
+"block": "CHANDANKIYARI",
+"name": "RAJKIYAKRIT M S BATBINOR",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130102101": {
+"no": 63,
+"block": "CHANDANKIYARI",
+"name": "RAJKIYAKRIT M S BHOJUDIH",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130101602": {
+"no": 64,
+"block": "CHANDANKIYARI",
+"name": "RAJKIYAKRIT M S CHANDANKIYARI (GIRLS)",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130101401": {
+"no": 65,
+"block": "CHANDANKIYARI",
+"name": "RAJKIYAKRIT M S CHANDRA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130108601": {
+"no": 66,
+"block": "CHANDANKIYARI",
+"name": "RAJKIYAKRIT M S JHALBARDA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130107501": {
+"no": 67,
+"block": "CHANDANKIYARI",
+"name": "RAJKIYAKRIT M S KALIKAPUR",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130110105": {
+"no": 68,
+"block": "CHANDANKIYARI",
+"name": "RAJKIYAKRIT M S KHEDADIH",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130100301": {
+"no": 69,
+"block": "CHANDANKIYARI",
+"name": "RAJKIYAKRIT M S KUMIRDOBA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130100701": {
+"no": 70,
+"block": "CHANDANKIYARI",
+"name": "RAJKIYAKRIT M S MADRA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130111703": {
+"no": 71,
+"block": "CHANDANKIYARI",
+"name": "RAJKIYAKRIT M S NAWDIHA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130100901": {
+"no": 72,
+"block": "CHANDANKIYARI",
+"name": "RAJKIYAKRIT M S SIMULIYA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130103001": {
+"no": 73,
+"block": "CHANDANKIYARI",
+"name": "RAJKIYAKRIT M S TALGARIYA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130101101": {
+"no": 74,
+"block": "CHANDANKIYARI",
+"name": "RAJKIYAKRIT M S UDALBANI",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130105703": {
+"no": 75,
+"block": "CHANDANKIYARI",
+"name": "UPG RAJKIYAKRIT M S AMLABAD",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130106401": {
+"no": 76,
+"block": "CHANDANKIYARI",
+"name": "UPG RAJKIYAKRIT M S ASANSOL",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130112701": {
+"no": 77,
+"block": "CHANDANKIYARI",
+"name": "UPG RAJKIYAKRIT M S BANSTORA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130103902": {
+"no": 78,
+"block": "CHANDANKIYARI",
+"name": "UPG RAJKIYAKRIT M S BARAJORE",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130101702": {
+"no": 79,
+"block": "CHANDANKIYARI",
+"name": "UPG RAJKIYAKRIT M S BARKAMA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130105412": {
+"no": 80,
+"block": "CHANDANKIYARI",
+"name": "UPG RAJKIYAKRIT M S BIRUBANDH",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130109901": {
+"no": 81,
+"block": "CHANDANKIYARI",
+"name": "UPG RAJKIYAKRIT M S BODMA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130104101": {
+"no": 82,
+"block": "CHANDANKIYARI",
+"name": "UPG RAJKIYAKRIT M S BOGULA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130107401": {
+"no": 83,
+"block": "CHANDANKIYARI",
+"name": "UPG RAJKIYAKRIT M S BORIYADIH",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130106804": {
+"no": 84,
+"block": "CHANDANKIYARI",
+"name": "UPG RAJKIYAKRIT M S BRAHMAN LAGHLA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130101406": {
+"no": 85,
+"block": "CHANDANKIYARI",
+"name": "UPG RAJKIYAKRIT M S CHAMRABAD",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130101606": {
+"no": 86,
+"block": "CHANDANKIYARI",
+"name": "UPG RAJKIYAKRIT M S CHANDANKIYARI BAZAR",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130109701": {
+"no": 87,
+"block": "CHANDANKIYARI",
+"name": "UPG RAJKIYAKRIT M S CHANDIPUR",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130109301": {
+"no": 88,
+"block": "CHANDANKIYARI",
+"name": "UPG RAJKIYAKRIT M S CHIRDA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130109601": {
+"no": 89,
+"block": "CHANDANKIYARI",
+"name": "UPG RAJKIYAKRIT M S DAMUDIH",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130102501": {
+"no": 90,
+"block": "CHANDANKIYARI",
+"name": "UPG RAJKIYAKRIT M S DEVGRAM",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130100101": {
+"no": 91,
+"block": "CHANDANKIYARI",
+"name": "UPG RAJKIYAKRIT M S DEYULTAND",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130107701": {
+"no": 92,
+"block": "CHANDANKIYARI",
+"name": "UPG RAJKIYAKRIT M S FUSRO",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130105402": {
+"no": 93,
+"block": "CHANDANKIYARI",
+"name": "UPG RAJKIYAKRIT M S GAHIRA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130104301": {
+"no": 94,
+"block": "CHANDANKIYARI",
+"name": "UPG RAJKIYAKRIT M S GALGALTAND",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130109802": {
+"no": 95,
+"block": "CHANDANKIYARI",
+"name": "UPG RAJKIYAKRIT M S GHAGHARGORA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130111801": {
+"no": 96,
+"block": "CHANDANKIYARI",
+"name": "UPG RAJKIYAKRIT M S GOSAIDIH",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130104901": {
+"no": 97,
+"block": "CHANDANKIYARI",
+"name": "UPG RAJKIYAKRIT M S GOURIGRAM",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130101901": {
+"no": 98,
+"block": "CHANDANKIYARI",
+"name": "UPG RAJKIYAKRIT M S GUNDLIBHITHA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130702301": {
+"no": 99,
+"block": "JARIDIH",
+"name": "RAJKIYAKRIT P S ARALDIH",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130701102": {
+"no": 100,
+"block": "JARIDIH",
+"name": "RAJKIYAKRIT P S BALIDIH",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130700302": {
+"no": 101,
+"block": "JARIDIH",
+"name": "RAJKIYAKRIT P S BALRAMPUR",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130701804": {
+"no": 102,
+"block": "JARIDIH",
+"name": "RAJKIYAKRIT P S BALUDIH",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130701902": {
+"no": 103,
+"block": "JARIDIH",
+"name": "RAJKIYAKRIT P S BARU (URDU)",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130702107": {
+"no": 104,
+"block": "JARIDIH",
+"name": "RAJKIYAKRIT P S BIRSARAM",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130701301": {
+"no": 105,
+"block": "JARIDIH",
+"name": "RAJKIYAKRIT P S CHILGADA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130701402": {
+"no": 106,
+"block": "JARIDIH",
+"name": "RAJKIYAKRIT P S GOPINATHPUR",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130700601": {
+"no": 107,
+"block": "JARIDIH",
+"name": "RAJKIYAKRIT P S HARDIHARIDIH (D-2018)",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130703901": {
+"no": 108,
+"block": "JARIDIH",
+"name": "RAJKIYAKRIT P S LIPU",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130700101": {
+"no": 109,
+"block": "JARIDIH",
+"name": "RAJKIYAKRIT P S RORIYA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130703501": {
+"no": 110,
+"block": "JARIDIH",
+"name": "RAJKIYAKRIT P S SUNDRO",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130700403": {
+"no": 111,
+"block": "JARIDIH",
+"name": "RAJKIYAKRIT P S TUPKADIH (URDU)",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130701403": {
+"no": 112,
+"block": "JARIDIH",
+"name": "SSA NPS BHANDARGODA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130701003": {
+"no": 113,
+"block": "JARIDIH",
+"name": "SSA NPS BHUTKATAND",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130703006": {
+"no": 114,
+"block": "JARIDIH",
+"name": "SSA NPS GADGAD KOCHA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130703203": {
+"no": 115,
+"block": "JARIDIH",
+"name": "SSA NPS PURNAPANI",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130703602": {
+"no": 116,
+"block": "JARIDIH",
+"name": "UPG P S ARATAND",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131100203": {
+"no": 117,
+"block": "PETARWAR",
+"name": "RAJKIYAKRIT M S ANGWALI",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131103302": {
+"no": 118,
+"block": "PETARWAR",
+"name": "RAJKIYAKRIT M S KHETKO",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131102001": {
+"no": 119,
+"block": "PETARWAR",
+"name": "RAJKIYAKRIT M S MIRJAPUR",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131103401": {
+"no": 120,
+"block": "PETARWAR",
+"name": "RAJKIYAKRIT M S PETARWAR",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131103402": {
+"no": 121,
+"block": "PETARWAR",
+"name": "RAJKIYAKRIT M S PETARWAR (BALIKA)",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131100301": {
+"no": 122,
+"block": "PETARWAR",
+"name": "RAJKIYAKRIT M S PICHHARI",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131103201": {
+"no": 123,
+"block": "PETARWAR",
+"name": "RAJKIYAKRIT M S TENUGHAT",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131106602": {
+"no": 124,
+"block": "PETARWAR",
+"name": "UPG M S CHAMPI BICH TOLA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131105402": {
+"no": 125,
+"block": "PETARWAR",
+"name": "UPG M S MERU DARU KHAS",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131103304": {
+"no": 126,
+"block": "PETARWAR",
+"name": "UPG M S MUSLIM NICHETOLA KHETKO",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131100201": {
+"no": 127,
+"block": "PETARWAR",
+"name": "UPG RAJKIYAKRIT M S ANGWALI KANYA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131102201": {
+"no": 128,
+"block": "PETARWAR",
+"name": "UPG RAJKIYAKRIT M S ARJUWA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131106001": {
+"no": 129,
+"block": "PETARWAR",
+"name": "UPG RAJKIYAKRIT M S BARA KENDUWA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131103901": {
+"no": 130,
+"block": "PETARWAR",
+"name": "UPG RAJKIYAKRIT M S BARSONGHA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131101701": {
+"no": 131,
+"block": "PETARWAR",
+"name": "UPG RAJKIYAKRIT M S BASARIYA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131101101": {
+"no": 132,
+"block": "PETARWAR",
+"name": "UPG RAJKIYAKRIT M S BEHARA GORA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131107701": {
+"no": 133,
+"block": "PETARWAR",
+"name": "UPG RAJKIYAKRIT M S BHULANKHETKO",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131108301": {
+"no": 134,
+"block": "PETARWAR",
+"name": "UPG RAJKIYAKRIT M S BUDHAN GODA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131106401": {
+"no": 135,
+"block": "PETARWAR",
+"name": "UPG RAJKIYAKRIT M S CHARGI",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131106801": {
+"no": 136,
+"block": "PETARWAR",
+"name": "UPG RAJKIYAKRIT M S CHATUGARHA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131102901": {
+"no": 137,
+"block": "PETARWAR",
+"name": "UPG RAJKIYAKRIT M S CHHAPARGARHA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131105501": {
+"no": 138,
+"block": "PETARWAR",
+"name": "UPG RAJKIYAKRIT M S CHIPUDAAG",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131105701": {
+"no": 139,
+"block": "PETARWAR",
+"name": "UPG RAJKIYAKRIT M S DAHUWA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131103001": {
+"no": 140,
+"block": "PETARWAR",
+"name": "UPG RAJKIYAKRIT M S DARID",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131105001": {
+"no": 141,
+"block": "PETARWAR",
+"name": "UPG RAJKIYAKRIT M S GABHARMOCHRO",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131102101": {
+"no": 142,
+"block": "PETARWAR",
+"name": "UPG RAJKIYAKRIT M S GOPALPUR",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131106701": {
+"no": 143,
+"block": "PETARWAR",
+"name": "UPG RAJKIYAKRIT M S JAMUNIYA TAND",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131102702": {
+"no": 144,
+"block": "PETARWAR",
+"name": "UPG RAJKIYAKRIT M S JARUWATAND MAKTAB",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131106201": {
+"no": 145,
+"block": "PETARWAR",
+"name": "UPG RAJKIYAKRIT M S JHIRKE",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131101601": {
+"no": 146,
+"block": "PETARWAR",
+"name": "UPG RAJKIYAKRIT M S KANIDIH",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131100801": {
+"no": 147,
+"block": "PETARWAR",
+"name": "UPG RAJKIYAKRIT M S KARANDIH",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131101901": {
+"no": 148,
+"block": "PETARWAR",
+"name": "UPG RAJKIYAKRIT M S KOH",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131104001": {
+"no": 149,
+"block": "PETARWAR",
+"name": "UPG RAJKIYAKRIT M S MAYAPUR",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131105401": {
+"no": 150,
+"block": "PETARWAR",
+"name": "UPG RAJKIYAKRIT M S MERU DARU",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131104301": {
+"no": 151,
+"block": "PETARWAR",
+"name": "UPG RAJKIYAKRIT M S OSAM",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131105302": {
+"no": 152,
+"block": "PETARWAR",
+"name": "UPG RAJKIYAKRIT M S PRAKHAND COLONY",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131103801": {
+"no": 153,
+"block": "PETARWAR",
+"name": "UPG RAJKIYAKRIT M S ROHAR",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131100701": {
+"no": 154,
+"block": "PETARWAR",
+"name": "UPG RAJKIYAKRIT M S RUKAM",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131105301": {
+"no": 155,
+"block": "PETARWAR",
+"name": "UPG RAJKIYAKRIT M S SADMA KALA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131105901": {
+"no": 156,
+"block": "PETARWAR",
+"name": "UPG RAJKIYAKRIT M S TAKAHA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131101301": {
+"no": 157,
+"block": "PETARWAR",
+"name": "UPG RAJKIYAKRIT M S ULGADDA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131103405": {
+"no": 158,
+"block": "PETARWAR",
+"name": "UPG RAJKIYKRIT M S KHATRI TOLA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131105601": {
+"no": 159,
+"block": "PETARWAR",
+"name": "UPG RAJKIYKRIT M S LAWAGADHA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131100601": {
+"no": 160,
+"block": "PETARWAR",
+"name": "UPG RAJKIYAKRIT +2 HIGH SCHOOL CHANDO",
+"category": "Pr. with Up.Pr. sec. and H.Sec.",
+"tables": 4,
+"chairs": 4
+},
+"20131103601": {
+"no": 161,
+"block": "PETARWAR",
+"name": "UPG RAJKIYAKRIT +2 HIGH SCHOOL KATAMKULHI",
+"category": "Pr. with Up.Pr. sec. and H.Sec.",
+"tables": 4,
+"chairs": 4
+},
+"20131106501": {
+"no": 162,
+"block": "PETARWAR",
+"name": "UPG RAJKIYAKRIT +2 HIGH SCHOOL ORDANA",
+"category": "Pr. with Up.Pr. sec. and H.Sec.",
+"tables": 4,
+"chairs": 4
+},
+"20131101401": {
+"no": 163,
+"block": "PETARWAR",
+"name": "UPG RAJKIYAKRIT +2 HIGH SCHOOL RANGAMATI",
+"category": "Pr. with Up.Pr. sec. and H.Sec.",
+"tables": 4,
+"chairs": 4
+},
+"20131103214": {
+"no": 164,
+"block": "PETARWAR",
+"name": "KGBV PETARWAR",
+"category": "Up. Pr. Secondary and Higher Sec",
+"tables": 4,
+"chairs": 4
+},
+"20131102301": {
+"no": 165,
+"block": "PETARWAR",
+"name": "PM SHRI UPG RAJKIYAKRIT HIGH SCHOOL PATKI",
+"category": "Pr. Up Pr. and Secondary Only",
+"tables": 4,
+"chairs": 4
+},
+"20131101603": {
+"no": 166,
+"block": "PETARWAR",
+"name": "UPG RAJKIYAKRIT HIGH SCHOOL CHALKARI",
+"category": "Pr. Up Pr. and Secondary Only",
+"tables": 4,
+"chairs": 4
+},
+"20131106606": {
+"no": 167,
+"block": "PETARWAR",
+"name": "UPG RAJKIYAKRIT HIGH SCHOOL CHANPI",
+"category": "Pr. Up Pr. and Secondary Only",
+"tables": 4,
+"chairs": 4
+},
+"20131103701": {
+"no": 168,
+"block": "PETARWAR",
+"name": "RAJKIYAKRIT P S AMBADIH (D-2018)",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131100202": {
+"no": 169,
+"block": "PETARWAR",
+"name": "RAJKIYAKRIT P S ANGWALI (MAKTAB)",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131100502": {
+"no": 170,
+"block": "PETARWAR",
+"name": "RAJKIYAKRIT P S BAGJOBRA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131101602": {
+"no": 171,
+"block": "PETARWAR",
+"name": "RAJKIYAKRIT PS CHALKARI",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131106601": {
+"no": 172,
+"block": "PETARWAR",
+"name": "RAJKIYAKRIT P S CHANPI (KANYA)",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131100901": {
+"no": 173,
+"block": "PETARWAR",
+"name": "RAJKIYAKRIT P S CHHAPPARDIH",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131104901": {
+"no": 174,
+"block": "PETARWAR",
+"name": "RAJKIYAKRIT P S GARRI",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131101501": {
+"no": 175,
+"block": "PETARWAR",
+"name": "RAJKIYAKRIT P S GHARWATAND (D-2018)",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131105201": {
+"no": 176,
+"block": "PETARWAR",
+"name": "RAJKIYAKRIT P S JEBRA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131105101": {
+"no": 177,
+"block": "PETARWAR",
+"name": "RAJKIYAKRIT P S JHOPROTAND",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131102401": {
+"no": 178,
+"block": "PETARWAR",
+"name": "RAJKIYAKRIT P S JHUNJHKO",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131104501": {
+"no": 179,
+"block": "PETARWAR",
+"name": "RAJKIYAKRIT P S KARMACHOKI",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131103501": {
+"no": 180,
+"block": "PETARWAR",
+"name": "RAJKIYAKRIT P S KESHWARI",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131102802": {
+"no": 181,
+"block": "PETARWAR",
+"name": "RAJKIYAKRIT P S KHAIRAJARA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131102501": {
+"no": 182,
+"block": "PETARWAR",
+"name": "RAJKIYAKRIT P S KHURD CHANDO",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131104801": {
+"no": 183,
+"block": "PETARWAR",
+"name": "RAJKIYAKRIT P S KOJRAM",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131104401": {
+"no": 184,
+"block": "PETARWAR",
+"name": "RAJKIYAKRIT P S MADAIGHOGHRA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131105801": {
+"no": 185,
+"block": "PETARWAR",
+"name": "RAJKIYAKRIT P S NAWA DIH",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131104101": {
+"no": 186,
+"block": "PETARWAR",
+"name": "RAJKIYAKRIT P S OBARA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131106303": {
+"no": 187,
+"block": "PETARWAR",
+"name": "SSA NPS BHELWATAND",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131106302": {
+"no": 188,
+"block": "PETARWAR",
+"name": "SSA NPS HAZARITAND",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131102306": {
+"no": 189,
+"block": "PETARWAR",
+"name": "SSA NPS MOTHATAND",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131101502": {
+"no": 190,
+"block": "PETARWAR",
+"name": "SSA NPS PIPRADIH GHARWATAND",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131106512": {
+"no": 191,
+"block": "PETARWAR",
+"name": "SSA NPS PIPRIYANG",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131107501": {
+"no": 192,
+"block": "PETARWAR",
+"name": "UPG P S ACHHAIYA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131103306": {
+"no": 193,
+"block": "PETARWAR",
+"name": "UPG P S AMBAKOCHA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131102205": {
+"no": 194,
+"block": "PETARWAR",
+"name": "UPG P S AMTAND",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131107601": {
+"no": 195,
+"block": "PETARWAR",
+"name": "UPG P S ARARI",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131102402": {
+"no": 196,
+"block": "PETARWAR",
+"name": "UPG P S BADKITAND",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130600401": {
+"no": 197,
+"block": "NAWADIH",
+"name": "RAJKIYAKRIT M S ARGAMO",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130600102": {
+"no": 198,
+"block": "NAWADIH",
+"name": "RAJKIYAKRIT M S BHENDRA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130602301": {
+"no": 199,
+"block": "NAWADIH",
+"name": "RAJKIYAKRIT M S CHIRUDIH",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130604601": {
+"no": 200,
+"block": "NAWADIH",
+"name": "RAJKIYAKRIT M S DAHIYARI",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130600301": {
+"no": 201,
+"block": "NAWADIH",
+"name": "RAJKIYAKRIT M S DEGAGARA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130604701": {
+"no": 202,
+"block": "NAWADIH",
+"name": "RAJKIYAKRIT M S NARAYAN PUR",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130605303": {
+"no": 203,
+"block": "NAWADIH",
+"name": "RAJKIYAKRIT M S NAWADIH",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130600201": {
+"no": 204,
+"block": "NAWADIH",
+"name": "RAJKIYAKRIT M S SAHARIYA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130606403": {
+"no": 205,
+"block": "NAWADIH",
+"name": "UPG M S AMBACHUA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130609401": {
+"no": 206,
+"block": "NAWADIH",
+"name": "UPG M S BELARGARA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130606404": {
+"no": 207,
+"block": "NAWADIH",
+"name": "UPG M S KADRUKHUTA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130602304": {
+"no": 208,
+"block": "NAWADIH",
+"name": "UPG M S MANGARDAHA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130606210": {
+"no": 209,
+"block": "NAWADIH",
+"name": "UPG M S PARSABERA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130601201": {
+"no": 210,
+"block": "NAWADIH",
+"name": "UPG RAJKIYAKRIT M S AHARDIH",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130602201": {
+"no": 211,
+"block": "NAWADIH",
+"name": "UPG RAJKIYAKRIT M S BANSHI",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130600801": {
+"no": 212,
+"block": "NAWADIH",
+"name": "UPG RAJKIYAKRIT M S BARADIH",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130606001": {
+"no": 213,
+"block": "NAWADIH",
+"name": "UPG RAJKIYAKRIT M S BARAI",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130602701": {
+"no": 214,
+"block": "NAWADIH",
+"name": "UPG RAJKIYAKRIT M S BHALMARA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130601001": {
+"no": 215,
+"block": "NAWADIH",
+"name": "UPG RAJKIYAKRIT M S BHAWANI",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130600901": {
+"no": 216,
+"block": "NAWADIH",
+"name": "UPG RAJKIYAKRIT M S BODRO",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130601101": {
+"no": 217,
+"block": "NAWADIH",
+"name": "UPG RAJKIYAKRIT M S BUDGADA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130603301": {
+"no": 218,
+"block": "NAWADIH",
+"name": "UPG RAJKIYAKRIT M S CHAPRI",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130601901": {
+"no": 219,
+"block": "NAWADIH",
+"name": "UPG RAJKIYAKRIT M S CHOTKIKURI",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130603601": {
+"no": 220,
+"block": "NAWADIH",
+"name": "UPG RAJKIYAKRIT M S DHAMNI",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130605001": {
+"no": 221,
+"block": "NAWADIH",
+"name": "UPG RAJKIYAKRIT M S GOBARGARA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130601701": {
+"no": 222,
+"block": "NAWADIH",
+"name": "UPG RAJKIYAKRIT M S HARLADIH",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130604201": {
+"no": 223,
+"block": "NAWADIH",
+"name": "UPG RAJKIYAKRIT M S JUNODIH",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130601801": {
+"no": 224,
+"block": "NAWADIH",
+"name": "UPG RAJKIYAKRIT M S KACHHO",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130602101": {
+"no": 225,
+"block": "NAWADIH",
+"name": "UPG RAJKIYAKRIT M S KHARPITO",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130606701": {
+"no": 226,
+"block": "NAWADIH",
+"name": "UPG RAJKIYAKRIT M S KOTHI",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130605801": {
+"no": 227,
+"block": "NAWADIH",
+"name": "UPG RAJKIYAKRIT M S LAHIA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130603801": {
+"no": 228,
+"block": "NAWADIH",
+"name": "UPG RAJKIYAKRIT M S LEMBODIH",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130604801": {
+"no": 229,
+"block": "NAWADIH",
+"name": "UPG RAJKIYAKRIT M S MAKTAB SURHI",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130604001": {
+"no": 230,
+"block": "NAWADIH",
+"name": "UPG RAJKIYAKRIT M S MANJHLITAND",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130601401": {
+"no": 231,
+"block": "NAWADIH",
+"name": "UPG RAJKIYAKRIT M S PARASBANI",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130605501": {
+"no": 232,
+"block": "NAWADIH",
+"name": "UPG RAJKIYAKRIT M S PARSA BEDA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130602601": {
+"no": 233,
+"block": "NAWADIH",
+"name": "UPG RAJKIYAKRIT M S PILPILO",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130603401": {
+"no": 234,
+"block": "NAWADIH",
+"name": "UPG RAJKIYAKRIT M S POTSO",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130605201": {
+"no": 235,
+"block": "NAWADIH",
+"name": "UPG RAJKIYAKRIT +2 HIGH SCHOOL GUNJARDIH",
+"category": "Pr. with Up.Pr. sec. and H.Sec.",
+"tables": 4,
+"chairs": 4
+},
+"20130606201": {
+"no": 236,
+"block": "NAWADIH",
+"name": "UPG RAJKIYAKRIT +2 HIGH SCHOOL PALAMU",
+"category": "Pr. with Up.Pr. sec. and H.Sec.",
+"tables": 4,
+"chairs": 4
+},
+"20130606401": {
+"no": 237,
+"block": "NAWADIH",
+"name": "UPG RAJKIYAKRIT +2 HIGH SCHOOL PENK",
+"category": "Pr. with Up.Pr. sec. and H.Sec.",
+"tables": 4,
+"chairs": 4
+},
+"20130605307": {
+"no": 238,
+"block": "NAWADIH",
+"name": "KGBV NAWADIH",
+"category": "Up. Pr. Secondary and Higher Sec",
+"tables": 4,
+"chairs": 4
+},
+"20130609904": {
+"no": 239,
+"block": "NAWADIH",
+"name": "PM SHRI UPG RAJKIYAKRIT HIGH SCHOOL BIRNI",
+"category": "Pr. Up Pr. and Secondary Only",
+"tables": 4,
+"chairs": 4
+},
+"20130605901": {
+"no": 240,
+"block": "NAWADIH",
+"name": "RAJKIYAKRIT GOVT. SECONDARY SCHOOL BARIDIH",
+"category": "Pr. Up Pr. and Secondary Only",
+"tables": 4,
+"chairs": 4
+},
+"20130605601": {
+"no": 241,
+"block": "NAWADIH",
+"name": "RAJKIYAKRIT GOVT. SECONDARY SCHOOL KANJKIRO",
+"category": "Pr. Up Pr. and Secondary Only",
+"tables": 4,
+"chairs": 4
+},
+"20130601301": {
+"no": 242,
+"block": "NAWADIH",
+"name": "RAJKIYAKRIT GOVT. SECONDARY SCHOOL MUNGORANGAMATI",
+"category": "Pr. Up Pr. and Secondary Only",
+"tables": 4,
+"chairs": 4
+},
+"20130602801": {
+"no": 243,
+"block": "NAWADIH",
+"name": "RAJKIYAKRIT GOVT. SECONDARY SCHOOL PIPRADIH",
+"category": "Pr. Up Pr. and Secondary Only",
+"tables": 4,
+"chairs": 4
+},
+"20130605701": {
+"no": 244,
+"block": "NAWADIH",
+"name": "UPG RAJKIYAKRIT HIGH SCHOOL GONIYATO",
+"category": "Pr. Up Pr. and Secondary Only",
+"tables": 4,
+"chairs": 4
+},
+"20130606601": {
+"no": 245,
+"block": "NAWADIH",
+"name": "UPG RAJKIYAKRIT HIGH SCHOOL POKHARIYA",
+"category": "Pr. Up Pr. and Secondary Only",
+"tables": 4,
+"chairs": 4
+},
+"20130604802": {
+"no": 246,
+"block": "NAWADIH",
+"name": "UPG RAJKIYAKRIT HIGH SCHOOL SURHI",
+"category": "Pr. Up Pr. and Secondary Only",
+"tables": 4,
+"chairs": 4
+},
+"20130606801": {
+"no": 247,
+"block": "NAWADIH",
+"name": "RAJKIYAKRIT P S ASNATAND",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130606101": {
+"no": 248,
+"block": "NAWADIH",
+"name": "RAJKIYAKRIT P S BADKI KUDI",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130605302": {
+"no": 249,
+"block": "NAWADIH",
+"name": "RAJKIYAKRIT P S BARWADIH-1",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130604003": {
+"no": 250,
+"block": "NAWADIH",
+"name": "RAJKIYAKRIT P S BARWADIH-2",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130600101": {
+"no": 251,
+"block": "NAWADIH",
+"name": "RAJKIYAKRIT P S BHENDRA (KANYA)",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130604602": {
+"no": 252,
+"block": "NAWADIH",
+"name": "RAJKIYAKRIT P S DAHIYARI MAKTAB",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130601602": {
+"no": 253,
+"block": "NAWADIH",
+"name": "RAJKIYAKRIT P S DHADHAKIBERA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130606501": {
+"no": 254,
+"block": "NAWADIH",
+"name": "RAJKIYAKRIT P S KATGHARA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130604901": {
+"no": 255,
+"block": "NAWADIH",
+"name": "RAJKIYAKRIT P S KHUNTA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130604301": {
+"no": 256,
+"block": "NAWADIH",
+"name": "RAJKIYAKRIT P S KIMOJORIYA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131201602": {
+"no": 257,
+"block": "KASMAR",
+"name": "RAJKIYAKRIT P S AJAIYATOLA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131205501": {
+"no": 258,
+"block": "KASMAR",
+"name": "RAJKIYAKRIT P S BAGIYARI (URDU)",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131202101": {
+"no": 259,
+"block": "KASMAR",
+"name": "RAJKIYAKRIT P S BASARIYA (D-2018)",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131204801": {
+"no": 260,
+"block": "KASMAR",
+"name": "RAJKIYAKRIT P S BHAWANIPUR (D-2018)",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131205301": {
+"no": 261,
+"block": "KASMAR",
+"name": "RAJKIYAKRIT P S BHURSATAND",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131204101": {
+"no": 262,
+"block": "KASMAR",
+"name": "RAJKIYAKRIT P S CHAINPUR (D-2018)",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131204701": {
+"no": 263,
+"block": "KASMAR",
+"name": "RAJKIYAKRIT P S CHOURA - 1 (D-2018)",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131206301": {
+"no": 264,
+"block": "KASMAR",
+"name": "RAJKIYAKRIT P S KARKATTA KHURD",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131200701": {
+"no": 265,
+"block": "KASMAR",
+"name": "RAJKIYAKRIT P S KASMAR 1",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131206001": {
+"no": 266,
+"block": "KASMAR",
+"name": "RAJKIYAKRIT P S KHUDIBERA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131203801": {
+"no": 267,
+"block": "KASMAR",
+"name": "RAJKIYAKRIT P S KOTOGADA (D-2018)",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131206101": {
+"no": 268,
+"block": "KASMAR",
+"name": "RAJKIYAKRIT P S LODHKIYARI",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131203601": {
+"no": 269,
+"block": "KASMAR",
+"name": "RAJKIYAKRIT P S MOCHRO",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131203901": {
+"no": 270,
+"block": "KASMAR",
+"name": "RAJKIYAKRIT P S PADI (D-2018)",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131208201": {
+"no": 271,
+"block": "KASMAR",
+"name": "RAJKIYAKRIT P S PIPRADIH",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131202301": {
+"no": 272,
+"block": "KASMAR",
+"name": "RAJKIYAKRIT P S PIRGUL (D-2018)",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131205401": {
+"no": 273,
+"block": "KASMAR",
+"name": "RAJKIYAKRIT P S SINGH PUR",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131203502": {
+"no": 274,
+"block": "KASMAR",
+"name": "SSA NPS CHURINGADHA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131205605": {
+"no": 275,
+"block": "KASMAR",
+"name": "UPG P S AWRATAND",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131207801": {
+"no": 276,
+"block": "KASMAR",
+"name": "UPG P S BADDIH",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131201104": {
+"no": 277,
+"block": "KASMAR",
+"name": "UPG P S BAJARTAND (MADHUKARPUR)",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131203205": {
+"no": 278,
+"block": "KASMAR",
+"name": "UPG P S BALABAHIYAR",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131202002": {
+"no": 279,
+"block": "KASMAR",
+"name": "UPG P S BANGAJRA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131203503": {
+"no": 280,
+"block": "KASMAR",
+"name": "UPG P S BANKANARI",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131200804": {
+"no": 281,
+"block": "KASMAR",
+"name": "UPG P S BARWADIH",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131201302": {
+"no": 282,
+"block": "KASMAR",
+"name": "UPG P S BENGAHARA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131207304": {
+"no": 283,
+"block": "KASMAR",
+"name": "UPG P S BHANDARDIH",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131205503": {
+"no": 284,
+"block": "KASMAR",
+"name": "UPG P S BHELWATAND",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131206901": {
+"no": 285,
+"block": "KASMAR",
+"name": "UPG P S BRAHMANDIH",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131206103": {
+"no": 286,
+"block": "KASMAR",
+"name": "UPG P S DAMRUGORA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131201102": {
+"no": 287,
+"block": "KASMAR",
+"name": "UPG P S DHUMDHUMITAND",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131201402": {
+"no": 288,
+"block": "KASMAR",
+"name": "UPG P S DOMTOLA (KHAIRACHATAR)",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131204702": {
+"no": 289,
+"block": "KASMAR",
+"name": "UPG P S DUMARDIH",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131203802": {
+"no": 290,
+"block": "KASMAR",
+"name": "UPG P S GATIGARA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131201506": {
+"no": 291,
+"block": "KASMAR",
+"name": "UPG P S GHANSITOLA (DANTOO)",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131205604": {
+"no": 292,
+"block": "KASMAR",
+"name": "UPG P S HALUMA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131205502": {
+"no": 293,
+"block": "KASMAR",
+"name": "UPG P S HARIJANTOLA (BAGIYARI)",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131206809": {
+"no": 294,
+"block": "KASMAR",
+"name": "UPG P S HARIJANTOLA TANGTONA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130605101": {
+"no": 295,
+"block": "NAWADIH",
+"name": "RAJKIYAKRIT P S KOKLODIH",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130608201": {
+"no": 296,
+"block": "NAWADIH",
+"name": "RAJKIYAKRIT P S MANPUR",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130605401": {
+"no": 297,
+"block": "NAWADIH",
+"name": "RAJKIYAKRIT P S NAWADIH KALA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130605301": {
+"no": 298,
+"block": "NAWADIH",
+"name": "RAJKIYAKRIT P S NAWADIH (KANYA)",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130600701": {
+"no": 299,
+"block": "NAWADIH",
+"name": "RAJKIYAKRIT P S TARATAND",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130601902": {
+"no": 300,
+"block": "NAWADIH",
+"name": "SSA NPS ADIWASITOLA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130606007": {
+"no": 301,
+"block": "NAWADIH",
+"name": "SSA NPS ASNATAND",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130603404": {
+"no": 302,
+"block": "NAWADIH",
+"name": "SSA NPS BANDHTAND",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130602305": {
+"no": 303,
+"block": "NAWADIH",
+"name": "SSA NPS BANDHTAND",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130606609": {
+"no": 304,
+"block": "NAWADIH",
+"name": "SSA NPS BHEDKHUTWA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130604704": {
+"no": 305,
+"block": "NAWADIH",
+"name": "SSA NPS BORATAND",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130606409": {
+"no": 306,
+"block": "NAWADIH",
+"name": "SSA NPS BUDHIBAGI",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130601306": {
+"no": 307,
+"block": "NAWADIH",
+"name": "SSA NPS DAHIYA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130606206": {
+"no": 308,
+"block": "NAWADIH",
+"name": "SSA NPS DARJI MUHALLA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130601305": {
+"no": 309,
+"block": "NAWADIH",
+"name": "SSA NPS GAMHARIYATAND",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130606102": {
+"no": 310,
+"block": "NAWADIH",
+"name": "SSA NPS GHATWARTOLA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130605802": {
+"no": 311,
+"block": "NAWADIH",
+"name": "SSA NPS GHATWARTOLA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130605310": {
+"no": 312,
+"block": "NAWADIH",
+"name": "SSA NPS GORIARITAND",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130600703": {
+"no": 313,
+"block": "NAWADIH",
+"name": "SSA NPS HURSODIH",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130602804": {
+"no": 314,
+"block": "NAWADIH",
+"name": "SSA NPS LEDHWAKEND",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130606006": {
+"no": 315,
+"block": "NAWADIH",
+"name": "SSA NPS MAHBICHHWA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130605206": {
+"no": 316,
+"block": "NAWADIH",
+"name": "SSA NPS MAHTOTOLA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130600302": {
+"no": 317,
+"block": "NAWADIH",
+"name": "SSA NPS MANJHITOLA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130606410": {
+"no": 318,
+"block": "NAWADIH",
+"name": "SSA NPS MIYANTOLA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130601404": {
+"no": 319,
+"block": "NAWADIH",
+"name": "SSA NPS PAINBAD",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130604403": {
+"no": 320,
+"block": "NAWADIH",
+"name": "SSA NPS PARSATAND",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130602105": {
+"no": 321,
+"block": "NAWADIH",
+"name": "SSA NPS PURVI TOLA KHARPITO",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130606207": {
+"no": 322,
+"block": "NAWADIH",
+"name": "SSA NPS RAKSA TUNGRI",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130605311": {
+"no": 323,
+"block": "NAWADIH",
+"name": "SSA NPS SIMATAND",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130601204": {
+"no": 324,
+"block": "NAWADIH",
+"name": "SSA NPS SINDWAR TOLA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130609901": {
+"no": 325,
+"block": "NAWADIH",
+"name": "SSA NPS SIRSA BERA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130607202": {
+"no": 326,
+"block": "NAWADIH",
+"name": "SSA NPS SISHWA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130607602": {
+"no": 327,
+"block": "NAWADIH",
+"name": "SSA NPS TETARIA TAND",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130606208": {
+"no": 328,
+"block": "NAWADIH",
+"name": "SSA NPS TURITOLA (PALAMU)",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130608501": {
+"no": 329,
+"block": "NAWADIH",
+"name": "UPG P S AMJHAR",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130602802": {
+"no": 330,
+"block": "NAWADIH",
+"name": "UPG P S ANDHUA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130607702": {
+"no": 331,
+"block": "NAWADIH",
+"name": "UPG P S BADAHI (ARGAMO)",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130606203": {
+"no": 332,
+"block": "NAWADIH",
+"name": "UPG P S BADKADIH",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130602704": {
+"no": 333,
+"block": "NAWADIH",
+"name": "UPG P S BAGJOBRA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130604804": {
+"no": 334,
+"block": "NAWADIH",
+"name": "UPG P S BAKHRITOLA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130600203": {
+"no": 335,
+"block": "NAWADIH",
+"name": "UPG P S BANDHTAND",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130606004": {
+"no": 336,
+"block": "NAWADIH",
+"name": "UPG P S BANKATWA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130605204": {
+"no": 337,
+"block": "NAWADIH",
+"name": "UPG P S BARKIBERA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130609906": {
+"no": 338,
+"block": "NAWADIH",
+"name": "UPG P S BARMASIA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130608801": {
+"no": 339,
+"block": "NAWADIH",
+"name": "UPG P S BARWADIH",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130605305": {
+"no": 340,
+"block": "NAWADIH",
+"name": "UPG P S BASTAJIA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130600802": {
+"no": 341,
+"block": "NAWADIH",
+"name": "UPG P S BEHRADIH",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130603304": {
+"no": 342,
+"block": "NAWADIH",
+"name": "UPG P S BELA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130603602": {
+"no": 343,
+"block": "NAWADIH",
+"name": "UPG P S BELIATAND (ADIWASITOLA)",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130604202": {
+"no": 344,
+"block": "NAWADIH",
+"name": "UPG P S BHALGARTAND",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130606008": {
+"no": 345,
+"block": "NAWADIH",
+"name": "UPG P S BHANDARKUDAR",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130606607": {
+"no": 346,
+"block": "NAWADIH",
+"name": "UPG P S BHARAMTAND",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130602702": {
+"no": 347,
+"block": "NAWADIH",
+"name": "UPG P S BIDWA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130603002": {
+"no": 348,
+"block": "NAWADIH",
+"name": "UPG P S BIRHORTOLA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130602102": {
+"no": 349,
+"block": "NAWADIH",
+"name": "UPG P S BOKHARWATAND",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130605202": {
+"no": 350,
+"block": "NAWADIH",
+"name": "UPG P S BRAHILTAND",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130601802": {
+"no": 351,
+"block": "NAWADIH",
+"name": "UPG P S BUTWARIA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130605702": {
+"no": 352,
+"block": "NAWADIH",
+"name": "UPG P S CHITAHIA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130609907": {
+"no": 353,
+"block": "NAWADIH",
+"name": "UPG P S CHOTAHI",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130609908": {
+"no": 354,
+"block": "NAWADIH",
+"name": "UPG P S DAHI",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130606608": {
+"no": 355,
+"block": "NAWADIH",
+"name": "UPG P S DHAWAYA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130603302": {
+"no": 356,
+"block": "NAWADIH",
+"name": "UPG P S DOKWATAND",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131204902": {
+"no": 357,
+"block": "KASMAR",
+"name": "UPG P S HARSALI",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131203204": {
+"no": 358,
+"block": "KASMAR",
+"name": "UPG P S HETHBAD",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131200902": {
+"no": 359,
+"block": "KASMAR",
+"name": "UPG P S JARA (NAWADIH)",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131204203": {
+"no": 360,
+"block": "KASMAR",
+"name": "UPG P S JEHRAKARMALITOLA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131200904": {
+"no": 361,
+"block": "KASMAR",
+"name": "UPG P S JOLHAKANARI",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131201511": {
+"no": 362,
+"block": "KASMAR",
+"name": "UPG P S JORIYAPAR WEST PART DANTOO",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131200104": {
+"no": 363,
+"block": "KASMAR",
+"name": "UPG P S JUMRA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131202503": {
+"no": 364,
+"block": "KASMAR",
+"name": "UPG P S KAMARHIR",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131202904": {
+"no": 365,
+"block": "KASMAR",
+"name": "UPG P S KAMARTOLA (SURJUDIH)",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131201802": {
+"no": 366,
+"block": "KASMAR",
+"name": "UPG P S KARMATAND",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131202506": {
+"no": 367,
+"block": "KASMAR",
+"name": "UPG P S KARUJARA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131201704": {
+"no": 368,
+"block": "KASMAR",
+"name": "UPG P S KATHALTOLA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131207302": {
+"no": 369,
+"block": "KASMAR",
+"name": "UPG P S KHIJRA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131200602": {
+"no": 370,
+"block": "KASMAR",
+"name": "UPG P S KHUTAHARA MAHTOTOLA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131205607": {
+"no": 371,
+"block": "KASMAR",
+"name": "UPG P S KOCHAGORA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131203102": {
+"no": 372,
+"block": "KASMAR",
+"name": "UPG P S KOYRIJARA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131205902": {
+"no": 373,
+"block": "KASMAR",
+"name": "UPG P S KUMARIBAGICHA KURKO",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131205102": {
+"no": 374,
+"block": "KASMAR",
+"name": "UPG P S MADAITOLA (TRIYONALA)",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131202604": {
+"no": 375,
+"block": "KASMAR",
+"name": "UPG P S MAHTOTOLA ORMO",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131203103": {
+"no": 376,
+"block": "KASMAR",
+"name": "UPG P S MAHUWATOLA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131207301": {
+"no": 377,
+"block": "KASMAR",
+"name": "UPG P S MANIPUR",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131201703": {
+"no": 378,
+"block": "KASMAR",
+"name": "UPG P S MASRIDIH",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131207601": {
+"no": 379,
+"block": "KASMAR",
+"name": "UPG P S MEDHA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131206202": {
+"no": 380,
+"block": "KASMAR",
+"name": "UPG P S MERAMHARA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131201005": {
+"no": 381,
+"block": "KASMAR",
+"name": "UPG P S MUSLIMTOLA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131200803": {
+"no": 382,
+"block": "KASMAR",
+"name": "UPG P S MUSLIMTOLA MANJURA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131202605": {
+"no": 383,
+"block": "KASMAR",
+"name": "UPG P S NAWAJARA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131203602": {
+"no": 384,
+"block": "KASMAR",
+"name": "UPG P S NICHHANI",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131200806": {
+"no": 385,
+"block": "KASMAR",
+"name": "UPG P S PAGARTAND",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131200302": {
+"no": 386,
+"block": "KASMAR",
+"name": "UPG P S PAKRIBANDH",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131201103": {
+"no": 387,
+"block": "KASMAR",
+"name": "UPG P S PARTAND",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131202402": {
+"no": 388,
+"block": "KASMAR",
+"name": "UPG P S PIRWATAND",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131205608": {
+"no": 389,
+"block": "KASMAR",
+"name": "UPG P S PURABTAND",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131200802": {
+"no": 390,
+"block": "KASMAR",
+"name": "UPG P S PURNAPANI",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131201503": {
+"no": 391,
+"block": "KASMAR",
+"name": "UPG P S ROHANIYATAND (DANTOO)",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131207305": {
+"no": 392,
+"block": "KASMAR",
+"name": "UPG P S SANKARDIH",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131302104": {
+"no": 393,
+"block": "CHANDRAPURA",
+"name": "RAJKIYAKRIT P S ALWIYAN KOLIYARI",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131303701": {
+"no": 394,
+"block": "CHANDRAPURA",
+"name": "RAJKIYAKRIT P S BUDHIDIH",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131300901": {
+"no": 395,
+"block": "CHANDRAPURA",
+"name": "RAJKIYAKRIT P S HARDHOWA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131301401": {
+"no": 396,
+"block": "CHANDRAPURA",
+"name": "RAJKIYAKRIT P S KURUMBA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131302803": {
+"no": 397,
+"block": "CHANDRAPURA",
+"name": "RAJKIYAKRIT P S MAKTAB TELO",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131302105": {
+"no": 398,
+"block": "CHANDRAPURA",
+"name": "RAJKIYAKRIT P S NORTH DAMODAR",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131300611": {
+"no": 399,
+"block": "CHANDRAPURA",
+"name": "RAJKIYAKRIT P S PARSATAND (D-2018)",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131300401": {
+"no": 400,
+"block": "CHANDRAPURA",
+"name": "RAJKIYAKRIT P S PIPRADIH STATION",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131301305": {
+"no": 401,
+"block": "CHANDRAPURA",
+"name": "RAJKIYAKRIT P S RAMGARH JHARIYA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131301902": {
+"no": 402,
+"block": "CHANDRAPURA",
+"name": "RAJKIYAKRIT P S RANGAMATI",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131302201": {
+"no": 403,
+"block": "CHANDRAPURA",
+"name": "RAJKIYAKRIT P S TARAMBI",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131301409": {
+"no": 404,
+"block": "CHANDRAPURA",
+"name": "SSA NPS AGARDIH",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131301408": {
+"no": 405,
+"block": "CHANDRAPURA",
+"name": "SSA NPS AMRATAND",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131303505": {
+"no": 406,
+"block": "CHANDRAPURA",
+"name": "SSA NPS JAMUNIA TAND",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131300410": {
+"no": 407,
+"block": "CHANDRAPURA",
+"name": "SSA NPS KHANUDIH",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131300616": {
+"no": 408,
+"block": "CHANDRAPURA",
+"name": "SSA NPS PHULJHARIYA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131302204": {
+"no": 409,
+"block": "CHANDRAPURA",
+"name": "SSA NPS SARAIYATAND",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131302811": {
+"no": 410,
+"block": "CHANDRAPURA",
+"name": "SSA NPS TELI BANDH",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131303404": {
+"no": 411,
+"block": "CHANDRAPURA",
+"name": "UPG P S AAMTOLA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131302809": {
+"no": 412,
+"block": "CHANDRAPURA",
+"name": "UPG P S BADAHI TELO",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131300609": {
+"no": 413,
+"block": "CHANDRAPURA",
+"name": "UPG P S BADKITAND",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131300608": {
+"no": 414,
+"block": "CHANDRAPURA",
+"name": "UPG P S BAGHMARITAND",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131302703": {
+"no": 415,
+"block": "CHANDRAPURA",
+"name": "UPG P S BAHIYARHIR",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131302402": {
+"no": 416,
+"block": "CHANDRAPURA",
+"name": "UPG P S BANDIO",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131303402": {
+"no": 417,
+"block": "CHANDRAPURA",
+"name": "UPG P S BEHRATAND",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131303104": {
+"no": 418,
+"block": "CHANDRAPURA",
+"name": "UPG P S BELIATAND",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131300610": {
+"no": 419,
+"block": "CHANDRAPURA",
+"name": "UPG P S BERABASTI",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131302702": {
+"no": 420,
+"block": "CHANDRAPURA",
+"name": "UPG P S BHALGADHA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131302203": {
+"no": 421,
+"block": "CHANDRAPURA",
+"name": "UPG P S BHANDARIDAH COLONY",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131302405": {
+"no": 422,
+"block": "CHANDRAPURA",
+"name": "UPG P S BHANDARTOLA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131300703": {
+"no": 423,
+"block": "CHANDRAPURA",
+"name": "UPG P S BHURSABAD",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131303503": {
+"no": 424,
+"block": "CHANDRAPURA",
+"name": "UPG P S CHIRUBAD",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131300704": {
+"no": 425,
+"block": "CHANDRAPURA",
+"name": "UPG P S DAHI LATBEDHI",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131302805": {
+"no": 426,
+"block": "CHANDRAPURA",
+"name": "UPG P S DANDUDIH",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131302808": {
+"no": 427,
+"block": "CHANDRAPURA",
+"name": "UPG P S FULSODIH",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131303101": {
+"no": 428,
+"block": "CHANDRAPURA",
+"name": "UPG P S GATIGARHA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131300801": {
+"no": 429,
+"block": "CHANDRAPURA",
+"name": "UPG P S GHUTWAY",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131303103": {
+"no": 430,
+"block": "CHANDRAPURA",
+"name": "UPG P S HARLATAND",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131302403": {
+"no": 431,
+"block": "CHANDRAPURA",
+"name": "UPG P S HATHIYA PATTHAR",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131302102": {
+"no": 432,
+"block": "CHANDRAPURA",
+"name": "UPG P S HIRGHUTTU",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131300615": {
+"no": 433,
+"block": "CHANDRAPURA",
+"name": "UPG P S JHAGRAHIBAD",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131300606": {
+"no": 434,
+"block": "CHANDRAPURA",
+"name": "UPG P S JHARNABASTI",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131300409": {
+"no": 435,
+"block": "CHANDRAPURA",
+"name": "UPG PS JHINJHIRGUTU",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131303202": {
+"no": 436,
+"block": "CHANDRAPURA",
+"name": "UPG P S JUNOURITAND",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131301702": {
+"no": 437,
+"block": "CHANDRAPURA",
+"name": "UPG P S KARAMARA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131302501": {
+"no": 438,
+"block": "CHANDRAPURA",
+"name": "UPG P S KORKOTA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131300702": {
+"no": 439,
+"block": "CHANDRAPURA",
+"name": "UPG P S LALMATIA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131303405": {
+"no": 440,
+"block": "CHANDRAPURA",
+"name": "UPG P S LAXMIPUR",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131301404": {
+"no": 441,
+"block": "CHANDRAPURA",
+"name": "UPG P S MADANPUR",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131303403": {
+"no": 442,
+"block": "CHANDRAPURA",
+"name": "UPG P S MADHUBAN",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131300607": {
+"no": 443,
+"block": "CHANDRAPURA",
+"name": "UPG P S MAILAGARHA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131300705": {
+"no": 444,
+"block": "CHANDRAPURA",
+"name": "UPG P S MANGALDADI",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131301403": {
+"no": 445,
+"block": "CHANDRAPURA",
+"name": "UPG P S MANJHLIPATRA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131302804": {
+"no": 446,
+"block": "CHANDRAPURA",
+"name": "UPG P S MIRCHAITAND",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131301302": {
+"no": 447,
+"block": "CHANDRAPURA",
+"name": "UPG P S NAIPAHARI",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131301303": {
+"no": 448,
+"block": "CHANDRAPURA",
+"name": "UPG P S PARSADIH",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131301603": {
+"no": 449,
+"block": "CHANDRAPURA",
+"name": "UPG P S PIPRADIH",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131303502": {
+"no": 450,
+"block": "CHANDRAPURA",
+"name": "UPG P S REHWA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131300502": {
+"no": 451,
+"block": "CHANDRAPURA",
+"name": "UPG P S SARAIYATAND 1",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131303002": {
+"no": 452,
+"block": "CHANDRAPURA",
+"name": "UPG P S SIMRAKULHI",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131301903": {
+"no": 453,
+"block": "CHANDRAPURA",
+"name": "UPG P S SWEEPERCOLONY",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131303105": {
+"no": 454,
+"block": "CHANDRAPURA",
+"name": "UPG P S TURITOLA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131302802": {
+"no": 457,
+"block": "CHANDRAPURA",
+"name": "PM SHRI RAJKIYAKRIT M S TELO",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131301402": {
+"no": 458,
+"block": "CHANDRAPURA",
+"name": "RAJKIYAKRIT M S CHANDANABAD",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131301901": {
+"no": 459,
+"block": "CHANDRAPURA",
+"name": "RAJKIYAKRIT M S CHANDRAPURA SOUTH",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131300601": {
+"no": 460,
+"block": "CHANDRAPURA",
+"name": "RAJKIYAKRIT M S DUGDHA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131301301": {
+"no": 461,
+"block": "CHANDRAPURA",
+"name": "RAJKIYAKRIT M S KARMATAND",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131302001": {
+"no": 462,
+"block": "CHANDRAPURA",
+"name": "RAJKIYAKRIT M S RATARI",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131302101": {
+"no": 463,
+"block": "CHANDRAPURA",
+"name": "RAJKIYAKRIT M S SIJUA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131303001": {
+"no": 464,
+"block": "CHANDRAPURA",
+"name": "UPG RAJKIYAKRIT M S ALARGO",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131300101": {
+"no": 465,
+"block": "CHANDRAPURA",
+"name": "UPG RAJKIYAKRIT M S BANDHDIH",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131300201": {
+"no": 466,
+"block": "CHANDRAPURA",
+"name": "UPG RAJKIYAKRIT M S BARWADIH",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131302701": {
+"no": 467,
+"block": "CHANDRAPURA",
+"name": "UPG RAJKIYAKRIT M S CHADRI",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131300501": {
+"no": 468,
+"block": "CHANDRAPURA",
+"name": "UPG RAJKIYAKRIT M S CHIRUDIH",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131300602": {
+"no": 469,
+"block": "CHANDRAPURA",
+"name": "UPG RAJKIYAKRIT M S DUGDA COALWASHRI",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131302502": {
+"no": 470,
+"block": "CHANDRAPURA",
+"name": "UPG RAJKIYAKRIT M S FATEHPUR",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131301001": {
+"no": 471,
+"block": "CHANDRAPURA",
+"name": "UPG RAJKIYAKRIT M S JARUA MADANPUR",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131301201": {
+"no": 472,
+"block": "CHANDRAPURA",
+"name": "UPG RAJKIYAKRIT M S KARIDAGDHO",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131302901": {
+"no": 473,
+"block": "CHANDRAPURA",
+"name": "UPG RAJKIYAKRIT M S KHALCHO",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131302404": {
+"no": 474,
+"block": "CHANDRAPURA",
+"name": "UPG RAJKIYAKRIT M S LAHARBERA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131303102": {
+"no": 475,
+"block": "CHANDRAPURA",
+"name": "UPG RAJKIYAKRIT M S NARRA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131303301": {
+"no": 476,
+"block": "CHANDRAPURA",
+"name": "UPG RAJKIYAKRIT M S PAPLO",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131301701": {
+"no": 477,
+"block": "CHANDRAPURA",
+"name": "UPG RAJKIYAKRIT M S RAJABEDA",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131302202": {
+"no": 478,
+"block": "CHANDRAPURA",
+"name": "UPG RAJKIYAKRIT M S TARAMBIGRAM",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131303401": {
+"no": 479,
+"block": "CHANDRAPURA",
+"name": "UPG RAJKIYAKRIT M S TARANARI",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131302801": {
+"no": 480,
+"block": "CHANDRAPURA",
+"name": "UPG RAJKIYAKRIT M S TELO (KANYA)",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131302301": {
+"no": 481,
+"block": "CHANDRAPURA",
+"name": "UPG RAJKIYAKRIT M S TURIYO",
+"category": "Primary with Upper Primary",
+"tables": 4,
+"chairs": 4
+},
+"20131300701": {
+"no": 482,
+"block": "CHANDRAPURA",
+"name": "UPG RAJKIYAKRIT +2 HIGH SCHOOL GHATIYARI",
+"category": "Pr. with Up.Pr. sec. and H.Sec.",
+"tables": 4,
+"chairs": 4
+},
+"20131300419": {
+"no": 483,
+"block": "CHANDRAPURA",
+"name": "JHARKHAND BALIKA AWASIYA VIDYALAYA CHANDRAPURA",
+"category": "Up. Pr. Secondary and Higher Sec",
+"tables": 4,
+"chairs": 4
+},
+"20131300618": {
+"no": 484,
+"block": "CHANDRAPURA",
+"name": "KGBV BERMO",
+"category": "Up. Pr. Secondary and Higher Sec",
+"tables": 4,
+"chairs": 4
+},
+"20131302401": {
+"no": 485,
+"block": "CHANDRAPURA",
+"name": "RAJKIYAKRIT GOVT. SECONDARY SCHOOL BANDIYO",
+"category": "Pr. Up Pr. and Secondary Only",
+"tables": 4,
+"chairs": 4
+},
+"20131303201": {
+"no": 486,
+"block": "CHANDRAPURA",
+"name": "RAJKIYAKRIT GOVT. SECONDARY SCHOOL JUNOURI",
+"category": "Pr. Up Pr. and Secondary Only",
+"tables": 4,
+"chairs": 4
+},
+"20131303501": {
+"no": 487,
+"block": "CHANDRAPURA",
+"name": "UPG RAJKIYAKRIT HIGH SCHOOL TARANGA",
+"category": "Pr. Up Pr. and Secondary Only",
+"tables": 4,
+"chairs": 4
+}
+}

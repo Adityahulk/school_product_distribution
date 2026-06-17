@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Bokaro School Delivery — Login</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <div class="center">
+    <form class="card" id="form">
+      <h1>School Delivery</h1>
+      <p class="sub">Bokaro district · table delivery routing</p>
+      <label>Username</label>
+      <input id="username" autocomplete="username" autocapitalize="none" required />
+      <label>Password</label>
+      <input id="password" type="password" autocomplete="current-password" required />
+      <div style="height:12px"></div>
+      <button type="submit" style="width:100%">Log in</button>
+      <p class="err" id="err"></p>
+    </form>
+  </div>
+  <script>
+    const form = document.getElementById('form');
+    const err = document.getElementById('err');
+    // If already logged in, bounce to the right place.
+    fetch('/api/me').then(r => r.ok ? r.json() : null).then(m => {
+      if (m && m.role === 'admin') location.href = '/admin';
+      else if (m && m.role === 'driver') location.href = '/driver';
+    });
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      err.textContent = '';
+      const res = await fetch('/api/login', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          username: document.getElementById('username').value.trim(),
+          password: document.getElementById('password').value,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) { err.textContent = data.error || 'Login failed'; return; }
+      location.href = data.redirect;
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1" />
+  <title>Driver · School Delivery</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <div class="app">
+    <div class="topbar">
+      <span class="title">🚚 Delivery</span>
+      <span class="spacer"></span>
+      <span class="stat">Done <b id="doneCount">–</b>/<b id="totalCount">–</b></span>
+      <span class="stat">· <b id="distKm">0</b> km</span>
+      <button class="secondary" id="logout" style="padding:8px 12px">Exit</button>
+    </div>
+
+    <div id="map"></div>
+
+    <div class="driver-bottom">
+      <div class="next-card" id="nextCard">
+        <div class="label">Next nearest school</div>
+        <div class="nm" id="nextName">Locating you…</div>
+        <div class="meta" id="nextMeta"></div>
+      </div>
+      <div class="row">
+        <button class="secondary" id="navBtn" disabled>🧭 Navigate</button>
+        <button class="green" id="checkinBtn" disabled>📷 Check in &amp; deliver</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Check-in modal -->
+  <div class="modal-bg" id="modalBg">
+    <form class="modal" id="checkinForm">
+      <h3 id="ciTitle">Check in</h3>
+      <p class="muted" id="ciSub"></p>
+      <label>Photo of the school</label>
+      <input type="file" name="school_photo" accept="image/*" capture="environment" required />
+      <label>Photo of delivered tables</label>
+      <input type="file" name="tables_photo" accept="image/*" capture="environment" required />
+      <p class="err" id="ciErr"></p>
+      <div class="row">
+        <button type="button" class="secondary" id="ciCancel">Cancel</button>
+        <button type="submit" class="green" id="ciSubmit">Confirm delivered</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="/js/driver.js"></script>
+</body>
+</html>

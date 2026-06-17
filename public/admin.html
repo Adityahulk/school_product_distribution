@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin · School Delivery</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <div class="admin">
+    <div class="sidebar">
+      <div style="display:flex;align-items:center;gap:8px">
+        <strong style="font-size:16px">📊 Admin</strong>
+        <span class="spacer" style="flex:1"></span>
+        <button class="secondary" id="logout" style="padding:6px 10px">Log out</button>
+      </div>
+
+      <h2>Progress</h2>
+      <div class="kpis">
+        <div class="kpi"><div class="v" id="kVisited">–</div><div class="k">Delivered</div></div>
+        <div class="kpi"><div class="v" id="kRemaining">–</div><div class="k">Remaining</div></div>
+        <div class="kpi"><div class="v" id="kTotal">–</div><div class="k">Total</div></div>
+      </div>
+
+      <h2>Drivers</h2>
+      <div id="driverList"></div>
+
+      <h2>Add driver</h2>
+      <form id="addForm">
+        <input id="dName" placeholder="Full name" />
+        <div style="height:6px"></div>
+        <input id="dUser" placeholder="Username (login id)" autocapitalize="none" required />
+        <div style="height:6px"></div>
+        <input id="dPass" placeholder="Password" required />
+        <div style="height:8px"></div>
+        <button type="submit" style="width:100%">Create driver</button>
+        <p class="err" id="addErr"></p>
+      </form>
+
+      <h2>Recent deliveries</h2>
+      <div id="visitList"></div>
+    </div>
+
+    <div id="map"></div>
+  </div>
+
+  <div class="modal-bg" id="modalBg">
+    <div class="modal">
+      <h3 id="mTitle"></h3>
+      <p class="muted" id="mSub"></p>
+      <div class="muted">School photo</div>
+      <img id="mSchool" alt="school" />
+      <div class="muted" style="margin-top:10px">Delivered tables</div>
+      <img id="mTables" alt="tables" />
+      <div style="height:12px"></div>
+      <button class="secondary" id="mClose" style="width:100%">Close</button>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="/js/admin.js"></script>
+</body>
+</html>

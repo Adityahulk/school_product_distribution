@@ -1,0 +1,166 @@
+'use strict';
+
+const BOKARO = [23.67, 86.15];
+let map;
+const schoolLayer = L.layerGroup();
+const driverLayer = L.layerGroup();
+const el = (id) => document.getElementById(id);
+
+function pin(color, s) {
+  return `<div style="width:${s}px;height:${s}px;border-radius:50%;background:${color};border:2px solid #0f1720"></div>`;
+}
+const visitedIcon = L.divIcon({ html: pin('#27ae60', 12), iconSize: [12, 12], iconAnchor: [6, 6] });
+const pendingIcon = L.divIcon({ html: pin('#9bb0c3', 8), iconSize: [8, 8], iconAnchor: [4, 4] });
+function driverIcon(label) {
+  return L.divIcon({
+    html: `<div style="background:#2f80ed;color:#fff;border:2px solid #0f1720;border-radius:14px;padding:2px 8px;font-size:12px;font-weight:700;white-space:nowrap">🚚 ${label}</div>`,
+    iconSize: [0, 0], iconAnchor: [20, 12],
+  });
+}
+
+function initMap() {
+  map = L.map('map').setView(BOKARO, 10);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19, attribution: '&copy; OpenStreetMap contributors',
+  }).addTo(map);
+  schoolLayer.addTo(map);
+  driverLayer.addTo(map);
+}
+
+let visitsByUdise = {};
+
+async function loadVisits() {
+  const res = await fetch('/api/admin/visits');
+  if (!res.ok) { if (res.status === 401) location.href = '/'; return; }
+  const { visits } = await res.json();
+  visitsByUdise = {};
+  for (const v of visits) visitsByUdise[v.udise] = v;
+
+  el('visitList').innerHTML = visits.slice(0, 30).map((v) => `
+    <div class="driver-item" style="cursor:pointer" data-udise="${v.udise}">
+      <div class="nm">${v.school_name}</div>
+      <div class="sub">${v.block} · by ${v.driver_name} · ${fmt(v.checkin_time)}</div>
+    </div>`).join('') || '<p class="muted">No deliveries yet.</p>';
+
+  el('visitList').querySelectorAll('[data-udise]').forEach((node) => {
+    node.addEventListener('click', () => openPhotos(node.dataset.udise));
+  });
+}
+
+async function loadSchools() {
+  const res = await fetch('/api/schools');
+  if (!res.ok) return;
+  const data = await res.json();
+  schoolLayer.clearLayers();
+  for (const s of data.schools) {
+    const m = L.marker([s.lat, s.lon], { icon: s.visited ? visitedIcon : pendingIcon });
+    if (s.visited) {
+      m.on('click', () => openPhotos(s.udise));
+      m.bindPopup(`<b>${s.name}</b><br>${s.block}<br>✅ delivered — click for photos`);
+    } else {
+      m.bindPopup(`<b>${s.name}</b><br>${s.block} · ${s.tables} tables<br><span class="muted">pending</span>`);
+    }
+    m.addTo(schoolLayer);
+  }
+}
+
+async function loadOverview() {
+  const res = await fetch('/api/admin/overview');
+  if (!res.ok) { if (res.status === 401) location.href = '/'; return; }
+  const o = await res.json();
+  el('kVisited').textContent = o.totalVisited;
+  el('kRemaining').textContent = o.remaining;
+  el('kTotal').textContent = o.totalSchools;
+
+  el('driverList').innerHTML = o.drivers.map((d) => `
+    <div class="driver-item">
+      <div class="nm">${d.name || d.username}
+        <span class="pill ${d.active ? 'on' : 'off'}">${d.active ? 'active' : 'disabled'}</span>
+      </div>
+      <div class="sub">@${d.username} · ${d.visited_count} delivered · ${d.km} km
+        ${d.last_seen ? '· seen ' + fmt(d.last_seen) : '· never seen'}</div>
+      <div style="margin-top:6px;display:flex;gap:6px">
+        <button class="secondary" style="padding:4px 8px;font-size:12px" data-toggle="${d.id}" data-active="${d.active}">${d.active ? 'Disable' : 'Enable'}</button>
+        <button class="secondary" style="padding:4px 8px;font-size:12px" data-reset="${d.id}">Reset pw</button>
+        ${d.last_lat ? `<button class="secondary" style="padding:4px 8px;font-size:12px" data-focus="${d.last_lat},${d.last_lon}">Locate</button>` : ''}
+      </div>
+    </div>`).join('') || '<p class="muted">No drivers yet.</p>';
+
+  // Live driver markers.
+  driverLayer.clearLayers();
+  for (const d of o.drivers) {
+    if (d.last_lat != null && d.last_lon != null) {
+      L.marker([d.last_lat, d.last_lon], { icon: driverIcon(d.name || d.username), zIndexOffset: 2000 })
+        .bindPopup(`<b>${d.name || d.username}</b><br>${d.km} km · ${d.visited_count} delivered<br>seen ${fmt(d.last_seen)}`)
+        .addTo(driverLayer);
+    }
+  }
+
+  el('driverList').querySelectorAll('[data-toggle]').forEach((b) => b.addEventListener('click', async () => {
+    await fetch('/api/admin/drivers/' + b.dataset.toggle, {
+      method: 'PATCH', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ active: b.dataset.active !== 'true' }),
+    });
+    loadOverview();
+  }));
+  el('driverList').querySelectorAll('[data-reset]').forEach((b) => b.addEventListener('click', async () => {
+    const pw = prompt('New password for this driver:');
+    if (!pw) return;
+    const r = await fetch('/api/admin/drivers/' + b.dataset.reset, {
+      method: 'PATCH', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password: pw }),
+    });
+    alert(r.ok ? 'Password updated.' : 'Failed to update.');
+  }));
+  el('driverList').querySelectorAll('[data-focus]').forEach((b) => b.addEventListener('click', () => {
+    const [la, lo] = b.dataset.focus.split(',').map(Number);
+    map.setView([la, lo], 14);
+  }));
+}
+
+function openPhotos(udise) {
+  const v = visitsByUdise[udise];
+  if (!v) return;
+  el('mTitle').textContent = v.school_name;
+  el('mSub').textContent = `${v.block} · delivered by ${v.driver_name} · ${fmt(v.checkin_time)}`;
+  el('mSchool').src = v.school_photo_url;
+  el('mTables').src = v.tables_photo_url;
+  el('modalBg').classList.add('show');
+}
+el('mClose').addEventListener('click', () => el('modalBg').classList.remove('show'));
+
+el('addForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  el('addErr').textContent = '';
+  const res = await fetch('/api/admin/drivers', {
+    method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      name: el('dName').value.trim(),
+      username: el('dUser').value.trim(),
+      password: el('dPass').value,
+    }),
+  });
+  const data = await res.json();
+  if (!res.ok) { el('addErr').textContent = data.error || 'Failed'; return; }
+  e.target.reset();
+  loadOverview();
+});
+
+el('logout').addEventListener('click', async () => {
+  await fetch('/api/logout', { method: 'POST' });
+  location.href = '/';
+});
+
+function fmt(t) {
+  if (!t) return '';
+  const d = new Date(t.replace(' ', 'T') + (t.includes('T') ? '' : 'Z'));
+  if (isNaN(d)) return t;
+  return d.toLocaleString();
+}
+
+function refreshAll() { loadOverview(); loadSchools(); loadVisits(); }
+
+initMap();
+refreshAll();
+setInterval(() => { loadOverview(); }, 10000); // live driver locations
+setInterval(() => { loadSchools(); loadVisits(); }, 30000);
