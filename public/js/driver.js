@@ -11,12 +11,17 @@ let routeLine = null;
 const el = (id) => document.getElementById(id);
 
 function initMap() {
-  map = L.map('map', { zoomControl: true }).setView(BOKARO, 11);
+  map = L.map('map', { zoomControl: false, tap: true }).setView(BOKARO, 11);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '&copy; OpenStreetMap contributors',
   }).addTo(map);
   schoolLayer.addTo(map);
+  // Mobile: recompute map size when the screen rotates or the browser bar shows/hides.
+  const fix = () => map.invalidateSize();
+  window.addEventListener('orientationchange', () => setTimeout(fix, 250));
+  window.addEventListener('resize', fix);
+  setTimeout(fix, 300);
 }
 
 const visitedIcon = L.divIcon({ className: '', html: pin('#27ae60'), iconSize: [18, 18], iconAnchor: [9, 9] });

@@ -25,6 +25,10 @@ function initMap() {
   }).addTo(map);
   schoolLayer.addTo(map);
   driverLayer.addTo(map);
+  const fix = () => map.invalidateSize();
+  window.addEventListener('orientationchange', () => setTimeout(fix, 250));
+  window.addEventListener('resize', fix);
+  setTimeout(fix, 300);
 }
 
 let visitsByUdise = {};
