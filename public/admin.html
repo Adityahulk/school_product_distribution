@@ -22,10 +22,16 @@
         <div class="kpi"><div class="v" id="kRemaining">–</div><div class="k">Remaining</div></div>
         <div class="kpi"><div class="v" id="kTotal">–</div><div class="k">Total</div></div>
       </div>
-      <div class="block-grid" id="blockList"></div>
 
-      <h2>Drivers</h2>
-      <div id="driverList"></div>
+      <details class="admin-section">
+        <summary>Blocks</summary>
+        <div class="block-grid" id="blockList"></div>
+      </details>
+
+      <details class="admin-section">
+        <summary>Drivers</summary>
+        <div id="driverList"></div>
+      </details>
 
       <h2>Add driver</h2>
       <form id="addForm">
@@ -45,7 +51,7 @@
         <p class="err" id="addErr"></p>
       </form>
 
-      <h2>Recent deliveries</h2>
+      <h2>Deliveries</h2>
       <div id="visitList"></div>
     </div>
 

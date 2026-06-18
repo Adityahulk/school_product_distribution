@@ -83,11 +83,21 @@ label.check-row {
 .admin { display: grid; grid-template-columns: 380px 1fr; height: 100vh; height: 100dvh; }
 .sidebar { background: var(--panel); border-right: 1px solid var(--line); overflow-y: auto; padding: 16px; }
 .sidebar h2 { font-size: 15px; margin: 18px 0 8px; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+.admin-section { margin-top: 12px; border: 1px solid var(--line); border-radius: 12px; background: var(--panel2); overflow: hidden; }
+.admin-section summary {
+  cursor: pointer; list-style: none; padding: 12px;
+  font-size: 14px; font-weight: 800; text-transform: uppercase; letter-spacing: .05em;
+}
+.admin-section summary::-webkit-details-marker { display: none; }
+.admin-section summary::after { content: 'Show'; float: right; color: var(--muted); font-size: 12px; font-weight: 600; letter-spacing: 0; text-transform: none; }
+.admin-section[open] summary { border-bottom: 1px solid var(--line); }
+.admin-section[open] summary::after { content: 'Hide'; }
+.admin-section > div { padding: 10px; }
 .kpis { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
 .kpi { background: var(--panel2); border: 1px solid var(--line); border-radius: 12px; padding: 12px; text-align: center; }
 .kpi .v { font-size: 22px; font-weight: 800; }
 .kpi .k { font-size: 11px; color: var(--muted); }
-.block-grid { display: grid; gap: 8px; margin-top: 10px; }
+.block-grid { display: grid; gap: 8px; }
 .block-item { background: var(--panel2); border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; }
 .block-item .top { display: flex; justify-content: space-between; gap: 8px; font-weight: 700; }
 .block-item .bar { height: 6px; border-radius: 999px; background: var(--line); overflow: hidden; margin-top: 8px; }
