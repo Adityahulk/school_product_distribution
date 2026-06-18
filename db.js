@@ -27,6 +27,8 @@ db.exec(`
     username      TEXT UNIQUE NOT NULL,
     password_hash TEXT NOT NULL,
     name          TEXT,
+    assigned_block TEXT,
+    can_test_mode INTEGER NOT NULL DEFAULT 0,
     active        INTEGER NOT NULL DEFAULT 1,
     created_at    TEXT NOT NULL DEFAULT (datetime('now'))
   );
@@ -59,6 +61,14 @@ db.exec(`
     updated_at TEXT
   );
 `);
+
+const driverColumns = db.prepare('PRAGMA table_info(drivers)').all().map((c) => c.name);
+if (!driverColumns.includes('assigned_block')) {
+  db.exec('ALTER TABLE drivers ADD COLUMN assigned_block TEXT');
+}
+if (!driverColumns.includes('can_test_mode')) {
+  db.exec('ALTER TABLE drivers ADD COLUMN can_test_mode INTEGER NOT NULL DEFAULT 0');
+}
 
 // Seed the fixed school list (idempotent: insert-or-replace the canonical reference data).
 function seedSchools() {

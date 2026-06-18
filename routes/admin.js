@@ -4,24 +4,34 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 const db = require('../db');
 const { requireAdmin } = require('../lib/auth');
+const { listBlocks, isValidBlock } = require('../lib/blocks');
 
 const router = express.Router();
 
 // --- Driver management ---
+router.get('/blocks', requireAdmin, (req, res) => {
+  res.json({ blocks: listBlocks() });
+});
+
 router.post('/drivers', requireAdmin, (req, res) => {
-  const { username, password, name } = req.body || {};
-  if (!username || !password) return res.status(400).json({ error: 'username and password required' });
+  const { username, password, name, assigned_block, can_test_mode } = req.body || {};
+  if (!username || !password || !assigned_block) return res.status(400).json({ error: 'username, password and block required' });
   if (String(password).length < 4) return res.status(400).json({ error: 'password too short' });
+  if (!isValidBlock(assigned_block)) return res.status(400).json({ error: 'unknown block' });
   const exists = db.prepare('SELECT id FROM drivers WHERE username = ?').get(username);
   if (exists) return res.status(409).json({ error: 'username already exists' });
   const hash = bcrypt.hashSync(String(password), 10);
-  const info = db.prepare('INSERT INTO drivers (username, password_hash, name) VALUES (?,?,?)')
-    .run(username, hash, name || username);
-  res.json({ id: info.lastInsertRowid, username, name: name || username });
+  const info = db.prepare('INSERT INTO drivers (username, password_hash, name, assigned_block, can_test_mode) VALUES (?,?,?,?,?)')
+    .run(username, hash, name || username, assigned_block, can_test_mode ? 1 : 0);
+  res.json({ id: info.lastInsertRowid, username, name: name || username, assigned_block, can_test_mode: !!can_test_mode });
 });
 
 router.get('/drivers', requireAdmin, (req, res) => {
-  const rows = db.prepare('SELECT id, username, name, active, created_at FROM drivers ORDER BY id').all();
+  const rows = db.prepare('SELECT id, username, name, assigned_block, can_test_mode, active, created_at FROM drivers ORDER BY id').all();
+  for (const r of rows) {
+    r.active = !!r.active;
+    r.can_test_mode = !!r.can_test_mode;
+  }
   res.json({ drivers: rows });
 });
 
@@ -30,13 +40,20 @@ router.patch('/drivers/:id', requireAdmin, (req, res) => {
   const id = parseInt(req.params.id, 10);
   const driver = db.prepare('SELECT id FROM drivers WHERE id = ?').get(id);
   if (!driver) return res.status(404).json({ error: 'driver not found' });
-  const { active, password } = req.body || {};
+  const { active, password, assigned_block, can_test_mode } = req.body || {};
   if (typeof active === 'boolean') {
     db.prepare('UPDATE drivers SET active = ? WHERE id = ?').run(active ? 1 : 0, id);
   }
   if (password) {
     if (String(password).length < 4) return res.status(400).json({ error: 'password too short' });
     db.prepare('UPDATE drivers SET password_hash = ? WHERE id = ?').run(bcrypt.hashSync(String(password), 10), id);
+  }
+  if (assigned_block) {
+    if (!isValidBlock(assigned_block)) return res.status(400).json({ error: 'unknown block' });
+    db.prepare('UPDATE drivers SET assigned_block = ? WHERE id = ?').run(assigned_block, id);
+  }
+  if (typeof can_test_mode === 'boolean') {
+    db.prepare('UPDATE drivers SET can_test_mode = ? WHERE id = ?').run(can_test_mode ? 1 : 0, id);
   }
   res.json({ ok: true });
 });
@@ -47,7 +64,7 @@ router.get('/overview', requireAdmin, (req, res) => {
   const totalVisited = db.prepare('SELECT COUNT(*) c FROM visits').get().c;
 
   const drivers = db.prepare(`
-    SELECT d.id, d.username, d.name, d.active,
+    SELECT d.id, d.username, d.name, d.assigned_block, d.can_test_mode, d.active,
       COALESCE(dd.meters, 0) AS meters,
       dd.last_lat, dd.last_lon, dd.updated_at AS last_seen,
       (SELECT COUNT(*) FROM visits v WHERE v.driver_id = d.id) AS visited_count
@@ -59,12 +76,25 @@ router.get('/overview', requireAdmin, (req, res) => {
   for (const d of drivers) {
     d.km = Math.round((d.meters / 1000) * 100) / 100;
     d.active = !!d.active;
+    d.can_test_mode = !!d.can_test_mode;
   }
+
+  const blocks = db.prepare(`
+    SELECT sc.block,
+      COUNT(*) AS total,
+      COUNT(v.id) AS delivered,
+      COUNT(*) - COUNT(v.id) AS remaining
+    FROM schools sc
+    LEFT JOIN visits v ON v.udise = sc.udise
+    GROUP BY sc.block
+    ORDER BY sc.block
+  `).all();
 
   res.json({
     totalSchools,
     totalVisited,
     remaining: totalSchools - totalVisited,
+    blocks,
     drivers,
   });
 });

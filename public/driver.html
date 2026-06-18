@@ -12,6 +12,7 @@
     <div class="topbar">
       <span class="title">🚚 Delivery</span>
       <span class="spacer"></span>
+      <span class="stat">Block <b id="blockName">–</b></span>
       <span class="stat">Done <b id="doneCount">–</b>/<b id="totalCount">–</b></span>
       <span class="stat">· <b id="distKm">0</b> km</span>
       <button class="secondary" id="logout" style="padding:8px 12px">Exit</button>
@@ -28,6 +29,13 @@
       <div class="row">
         <button class="secondary" id="navBtn" disabled>🧭 Navigate</button>
         <button class="green" id="checkinBtn" disabled>📷 Check in &amp; deliver</button>
+      </div>
+      <div class="test-panel" id="testPanel" hidden>
+        <div class="label">Test mode</div>
+        <div class="row compact">
+          <button class="secondary" id="testGujaratBtn" type="button">Use Gujarat</button>
+          <button class="secondary" id="testArriveBtn" type="button" disabled>Simulate arrival</button>
+        </div>
       </div>
     </div>
   </div>

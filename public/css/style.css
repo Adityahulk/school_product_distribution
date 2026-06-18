@@ -29,12 +29,18 @@ button.secondary { background: var(--panel2); color: var(--txt); border: 1px sol
 button.green { background: var(--green); }
 button:active:not(:disabled) { transform: scale(.98); }
 button:disabled { opacity: .5; cursor: default; }
-input {
+input, select {
   font: inherit; width: 100%; padding: 12px; border-radius: 10px;
   border: 1px solid var(--line); background: var(--panel2); color: var(--txt);
   font-size: 16px; /* >=16px prevents iOS auto-zoom on focus */
 }
+input[type=checkbox] { width: auto; }
+select { appearance: none; }
 label { display: block; font-size: 13px; color: var(--muted); margin: 10px 0 4px; }
+label.check-row {
+  display: flex; align-items: center; gap: 8px;
+  margin: 0; color: var(--txt); font-size: 14px;
+}
 
 /* Login */
 .center { min-height: 100vh; min-height: 100dvh; display: grid; place-items: center; padding: 20px; padding-top: max(20px, env(safe-area-inset-top)); }
@@ -64,6 +70,13 @@ label { display: block; font-size: 13px; color: var(--muted); margin: 10px 0 4px
 .next-card .meta { color: var(--muted); font-size: 13px; }
 .row { display: flex; gap: 10px; margin-top: 12px; }
 .row > * { flex: 1; }
+.row.compact { margin-top: 8px; }
+.row.compact button { min-height: 40px; padding: 8px 10px; font-size: 13px; }
+.test-panel {
+  margin-top: 12px; padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+.test-panel .label { color: var(--amber); font-size: 12px; text-transform: uppercase; letter-spacing: .04em; }
 
 /* Admin layout */
 .admin { display: grid; grid-template-columns: 380px 1fr; height: 100vh; height: 100dvh; }
@@ -73,6 +86,11 @@ label { display: block; font-size: 13px; color: var(--muted); margin: 10px 0 4px
 .kpi { background: var(--panel2); border: 1px solid var(--line); border-radius: 12px; padding: 12px; text-align: center; }
 .kpi .v { font-size: 22px; font-weight: 800; }
 .kpi .k { font-size: 11px; color: var(--muted); }
+.block-grid { display: grid; gap: 8px; margin-top: 10px; }
+.block-item { background: var(--panel2); border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; }
+.block-item .top { display: flex; justify-content: space-between; gap: 8px; font-weight: 700; }
+.block-item .bar { height: 6px; border-radius: 999px; background: var(--line); overflow: hidden; margin-top: 8px; }
+.block-item .fill { height: 100%; background: var(--green); }
 .driver-item { background: var(--panel2); border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; margin-bottom: 8px; }
 .driver-item .nm { font-weight: 700; }
 .driver-item .sub { font-size: 12px; color: var(--muted); margin-top: 2px; }

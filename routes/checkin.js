@@ -6,6 +6,7 @@ const path = require('path');
 const fs = require('fs');
 const db = require('../db');
 const { requireDriver } = require('../lib/auth');
+const { getDriverBlock } = require('../lib/blocks');
 
 const router = express.Router();
 const UPLOAD_ROOT = path.join(__dirname, '..', 'uploads');
@@ -53,8 +54,15 @@ router.post(
     if (!udise) { cleanup(); return res.status(400).json({ error: 'udise required' }); }
     if (!schoolFile || !tablesFile) { cleanup(); return res.status(400).json({ error: 'both school_photo and tables_photo are required' }); }
 
-    const school = db.prepare('SELECT udise FROM schools WHERE udise = ?').get(udise);
+    const assignedBlock = getDriverBlock(req.user.id);
+    if (!assignedBlock) { cleanup(); return res.status(403).json({ error: 'driver has no assigned block' }); }
+
+    const school = db.prepare('SELECT udise, block FROM schools WHERE udise = ?').get(udise);
     if (!school) { cleanup(); return res.status(404).json({ error: 'unknown school' }); }
+    if (school.block !== assignedBlock) {
+      cleanup();
+      return res.status(403).json({ error: 'school is outside assigned block' });
+    }
 
     const existing = db.prepare('SELECT id FROM visits WHERE udise = ?').get(udise);
     if (existing) { cleanup(); return res.status(409).json({ error: 'school already marked visited' }); }

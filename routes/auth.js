@@ -22,7 +22,14 @@ router.post('/login', (req, res) => {
   // Driver: bcrypt-hashed password in DB.
   const driver = db.prepare('SELECT * FROM drivers WHERE username = ?').get(username);
   if (driver && driver.active && bcrypt.compareSync(password, driver.password_hash)) {
-    setSession(res, { role: 'driver', id: driver.id, username: driver.username, name: driver.name });
+    setSession(res, {
+      role: 'driver',
+      id: driver.id,
+      username: driver.username,
+      name: driver.name,
+      assigned_block: driver.assigned_block,
+      can_test_mode: !!driver.can_test_mode,
+    });
     return res.json({ role: 'driver', redirect: '/driver' });
   }
 
@@ -37,6 +44,17 @@ router.post('/logout', (req, res) => {
 router.get('/me', (req, res) => {
   const s = readSession(req);
   if (!s) return res.status(401).json({ error: 'not logged in' });
+  if (s.role === 'driver') {
+    const driver = db.prepare('SELECT assigned_block, can_test_mode FROM drivers WHERE id = ?').get(s.id);
+    return res.json({
+      role: s.role,
+      username: s.username,
+      name: s.name,
+      id: s.id,
+      assigned_block: driver && driver.assigned_block,
+      can_test_mode: !!(driver && driver.can_test_mode),
+    });
+  }
   res.json({ role: s.role, username: s.username, name: s.name, id: s.id });
 });
 

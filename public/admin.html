@@ -22,6 +22,7 @@
         <div class="kpi"><div class="v" id="kRemaining">–</div><div class="k">Remaining</div></div>
         <div class="kpi"><div class="v" id="kTotal">–</div><div class="k">Total</div></div>
       </div>
+      <div class="block-grid" id="blockList"></div>
 
       <h2>Drivers</h2>
       <div id="driverList"></div>
@@ -30,9 +31,15 @@
       <form id="addForm">
         <input id="dName" placeholder="Full name" />
         <div style="height:6px"></div>
+        <select id="dBlock" required>
+          <option value="">Select block</option>
+        </select>
+        <div style="height:6px"></div>
         <input id="dUser" placeholder="Username (login id)" autocapitalize="none" required />
         <div style="height:6px"></div>
         <input id="dPass" placeholder="Password" required />
+        <div style="height:8px"></div>
+        <label class="check-row"><input id="dTestMode" type="checkbox" /> Allow test mode</label>
         <div style="height:8px"></div>
         <button type="submit" style="width:100%">Create driver</button>
         <p class="err" id="addErr"></p>

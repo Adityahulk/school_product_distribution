@@ -32,6 +32,16 @@ function initMap() {
 }
 
 let visitsByUdise = {};
+let blocks = [];
+
+async function loadBlocks() {
+  const res = await fetch('/api/admin/blocks');
+  if (!res.ok) { if (res.status === 401) location.href = '/'; return; }
+  const data = await res.json();
+  blocks = data.blocks || [];
+  el('dBlock').innerHTML = '<option value="">Select block</option>' +
+    blocks.map((b) => `<option value="${escapeHtml(b)}">${escapeHtml(b)}</option>`).join('');
+}
 
 async function loadVisits() {
   const res = await fetch('/api/admin/visits');
@@ -75,17 +85,29 @@ async function loadOverview() {
   el('kVisited').textContent = o.totalVisited;
   el('kRemaining').textContent = o.remaining;
   el('kTotal').textContent = o.totalSchools;
+  el('blockList').innerHTML = (o.blocks || []).map((b) => {
+    const pct = b.total ? Math.round((b.delivered / b.total) * 100) : 0;
+    return `
+      <div class="block-item">
+        <div class="top"><span>${escapeHtml(b.block)}</span><span>${b.delivered}/${b.total}</span></div>
+        <div class="sub">${b.remaining} remaining</div>
+        <div class="bar"><div class="fill" style="width:${pct}%"></div></div>
+      </div>`;
+  }).join('');
 
   el('driverList').innerHTML = o.drivers.map((d) => `
     <div class="driver-item">
       <div class="nm">${d.name || d.username}
         <span class="pill ${d.active ? 'on' : 'off'}">${d.active ? 'active' : 'disabled'}</span>
+        <span class="pill ${d.can_test_mode ? 'on' : 'off'}">${d.can_test_mode ? 'test on' : 'test off'}</span>
       </div>
-      <div class="sub">@${d.username} · ${d.visited_count} delivered · ${d.km} km
+      <div class="sub">@${d.username} · ${d.assigned_block || 'no block'} · ${d.visited_count} delivered · ${d.km} km
         ${d.last_seen ? '· seen ' + fmt(d.last_seen) : '· never seen'}</div>
       <div style="margin-top:6px;display:flex;gap:6px">
         <button class="secondary" style="padding:4px 8px;font-size:12px" data-toggle="${d.id}" data-active="${d.active}">${d.active ? 'Disable' : 'Enable'}</button>
         <button class="secondary" style="padding:4px 8px;font-size:12px" data-reset="${d.id}">Reset pw</button>
+        <button class="secondary" style="padding:4px 8px;font-size:12px" data-block="${d.id}">Block</button>
+        <button class="secondary" style="padding:4px 8px;font-size:12px" data-test="${d.id}" data-test-active="${d.can_test_mode}">${d.can_test_mode ? 'Test off' : 'Test on'}</button>
         ${d.last_lat ? `<button class="secondary" style="padding:4px 8px;font-size:12px" data-focus="${d.last_lat},${d.last_lon}">Locate</button>` : ''}
       </div>
     </div>`).join('') || '<p class="muted">No drivers yet.</p>';
@@ -116,6 +138,23 @@ async function loadOverview() {
     });
     alert(r.ok ? 'Password updated.' : 'Failed to update.');
   }));
+  el('driverList').querySelectorAll('[data-block]').forEach((b) => b.addEventListener('click', async () => {
+    const assigned_block = prompt('Assign block:\n' + blocks.join('\n'));
+    if (!assigned_block) return;
+    const r = await fetch('/api/admin/drivers/' + b.dataset.block, {
+      method: 'PATCH', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ assigned_block }),
+    });
+    if (!r.ok) alert('Failed to update block.');
+    loadOverview();
+  }));
+  el('driverList').querySelectorAll('[data-test]').forEach((b) => b.addEventListener('click', async () => {
+    await fetch('/api/admin/drivers/' + b.dataset.test, {
+      method: 'PATCH', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ can_test_mode: b.dataset.testActive !== 'true' }),
+    });
+    loadOverview();
+  }));
   el('driverList').querySelectorAll('[data-focus]').forEach((b) => b.addEventListener('click', () => {
     const [la, lo] = b.dataset.focus.split(',').map(Number);
     map.setView([la, lo], 14);
@@ -140,6 +179,8 @@ el('addForm').addEventListener('submit', async (e) => {
     method: 'POST', headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       name: el('dName').value.trim(),
+      assigned_block: el('dBlock').value,
+      can_test_mode: el('dTestMode').checked,
       username: el('dUser').value.trim(),
       password: el('dPass').value,
     }),
@@ -162,7 +203,13 @@ function fmt(t) {
   return d.toLocaleString();
 }
 
-function refreshAll() { loadOverview(); loadSchools(); loadVisits(); }
+function escapeHtml(s) {
+  return String(s || '').replace(/[&<>"']/g, (c) => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  }[c]));
+}
+
+function refreshAll() { loadBlocks(); loadOverview(); loadSchools(); loadVisits(); }
 
 initMap();
 refreshAll();

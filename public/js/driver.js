@@ -1,12 +1,15 @@
 'use strict';
 
 const BOKARO = [23.67, 86.15];
+const GUJARAT = { lat: 23.0225, lon: 72.5714 };
+const TEST_MODE_FROM_URL = new URLSearchParams(location.search).get('test') === '1';
 let map, meMarker, accuracyCircle;
 let schoolLayer = L.layerGroup();
 let myPos = null;          // {lat, lon}
 let nextSchool = null;
 let lastSentPos = null;
 let routeLine = null;
+let testModeAllowed = TEST_MODE_FROM_URL;
 
 const el = (id) => document.getElementById(id);
 
@@ -34,8 +37,14 @@ function pin(color, big) {
 
 async function loadSchools() {
   const res = await fetch('/api/schools');
-  if (!res.ok) { location.href = '/'; return; }
+  if (!res.ok) {
+    const data = await res.json().catch(() => ({}));
+    el('nextName').textContent = data.error || 'Unable to load schools.';
+    el('nextMeta').textContent = '';
+    return;
+  }
   const data = await res.json();
+  el('blockName').textContent = data.assigned_block || 'All';
   el('totalCount').textContent = data.total;
   schoolLayer.clearLayers();
   let done = 0;
@@ -64,6 +73,7 @@ async function refreshRoute() {
     return;
   }
   nextSchool = data.next;
+  if (testModeAllowed) el('testArriveBtn').disabled = false;
   const km = (nextSchool.legMeters / 1000).toFixed(2);
   el('nextName').textContent = nextSchool.name;
   el('nextMeta').textContent = `${nextSchool.block} · ${nextSchool.tables} tables · ${km} km away · ${data.remaining} schools left`;
@@ -103,10 +113,10 @@ async function sendLocation() {
   }
 }
 
-function onPosition(p) {
+function setPosition(lat, lon, accuracy) {
   const first = !myPos;
-  myPos = { lat: p.coords.latitude, lon: p.coords.longitude };
-  const acc = p.coords.accuracy || 0;
+  myPos = { lat, lon };
+  const acc = accuracy || 0;
   if (!meMarker) {
     meMarker = L.circleMarker([myPos.lat, myPos.lon], { radius: 8, color: '#2f80ed', fillColor: '#2f80ed', fillOpacity: 1 }).addTo(map);
     accuracyCircle = L.circle([myPos.lat, myPos.lon], { radius: acc, color: '#2f80ed', opacity: .25, fillOpacity: .08 }).addTo(map);
@@ -119,7 +129,16 @@ function onPosition(p) {
   refreshRoute();
 }
 
+function onPosition(p) {
+  setPosition(p.coords.latitude, p.coords.longitude, p.coords.accuracy);
+}
+
 function startGeo() {
+  if (TEST_MODE_FROM_URL) {
+    el('testPanel').hidden = false;
+    setPosition(GUJARAT.lat, GUJARAT.lon, 30);
+    return;
+  }
   if (!('geolocation' in navigator)) {
     el('nextName').textContent = 'Geolocation not available on this device/browser.';
     return;
@@ -135,6 +154,16 @@ el('navBtn').addEventListener('click', () => {
   if (!nextSchool) return;
   const url = `https://www.google.com/maps/dir/?api=1&destination=${nextSchool.lat},${nextSchool.lon}&travelmode=driving`;
   window.open(url, '_blank');
+});
+
+el('testGujaratBtn').addEventListener('click', () => {
+  if (!testModeAllowed) return;
+  setPosition(GUJARAT.lat, GUJARAT.lon, 30);
+});
+
+el('testArriveBtn').addEventListener('click', () => {
+  if (!testModeAllowed || !nextSchool) return;
+  setPosition(nextSchool.lat, nextSchool.lon, 8);
 });
 
 // --- Check-in modal ---
@@ -179,6 +208,20 @@ el('logout').addEventListener('click', async () => {
 // Poll so other drivers' check-ins update this route/map.
 setInterval(() => { loadSchools(); refreshRoute(); }, 20000);
 
-initMap();
-loadSchools();
-startGeo();
+async function initDriver() {
+  try {
+    const res = await fetch('/api/me');
+    if (res.ok) {
+      const me = await res.json();
+      testModeAllowed = TEST_MODE_FROM_URL || !!me.can_test_mode;
+      el('testPanel').hidden = !testModeAllowed;
+    }
+  } catch (e) {
+    console.warn('profile load failed', e);
+  }
+  initMap();
+  loadSchools();
+  startGeo();
+}
+
+initDriver();
