@@ -20,7 +20,7 @@ router.post('/login', (req, res) => {
   }
 
   // Driver: bcrypt-hashed password in DB.
-  const driver = db.prepare('SELECT * FROM drivers WHERE username = ?').get(username);
+  const driver = db.prepare('SELECT * FROM drivers WHERE username = ? AND deleted_at IS NULL').get(username);
   if (driver && driver.active && bcrypt.compareSync(password, driver.password_hash)) {
     setSession(res, {
       role: 'driver',

@@ -26,6 +26,7 @@ button {
   -webkit-user-select: none; user-select: none;
 }
 button.secondary { background: var(--panel2); color: var(--txt); border: 1px solid var(--line); }
+button.secondary.danger { color: #ffd6d6; border-color: var(--red); }
 button.green { background: var(--green); }
 button:active:not(:disabled) { transform: scale(.98); }
 button:disabled { opacity: .5; cursor: default; }
@@ -94,6 +95,7 @@ label.check-row {
 .driver-item { background: var(--panel2); border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; margin-bottom: 8px; }
 .driver-item .nm { font-weight: 700; }
 .driver-item .sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
+.driver-name { cursor: pointer; text-decoration: underline; text-decoration-style: dotted; text-underline-offset: 3px; }
 .pill { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 999px; background: var(--line); color: var(--txt); }
 .pill.on { background: var(--green); }
 .pill.off { background: var(--red); }

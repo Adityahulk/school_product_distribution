@@ -32,6 +32,9 @@ function initMap() {
 }
 
 let visitsByUdise = {};
+let allVisits = [];
+let selectedDriverId = null;
+let selectedDriverName = '';
 let blocks = [];
 
 async function loadBlocks() {
@@ -47,14 +50,37 @@ async function loadVisits() {
   const res = await fetch('/api/admin/visits');
   if (!res.ok) { if (res.status === 401) location.href = '/'; return; }
   const { visits } = await res.json();
+  allVisits = visits || [];
   visitsByUdise = {};
-  for (const v of visits) visitsByUdise[v.udise] = v;
+  for (const v of allVisits) visitsByUdise[v.udise] = v;
 
-  el('visitList').innerHTML = visits.slice(0, 30).map((v) => `
+  renderVisitList();
+}
+
+function renderVisitList() {
+  const visits = selectedDriverId
+    ? allVisits.filter((v) => v.driver_id === selectedDriverId)
+    : allVisits.slice(0, 30);
+  const header = selectedDriverId
+    ? `<div class="driver-item">
+        <div class="nm">${escapeHtml(selectedDriverName)}</div>
+        <div class="sub">${visits.length} deliveries</div>
+        <div style="margin-top:6px"><button class="secondary" style="padding:4px 8px;font-size:12px" data-clear-driver>Show all recent</button></div>
+      </div>`
+    : '';
+
+  el('visitList').innerHTML = header + (visits.map((v) => `
     <div class="driver-item" style="cursor:pointer" data-udise="${v.udise}">
-      <div class="nm">${v.school_name}</div>
-      <div class="sub">${v.block} · by ${v.driver_name} · ${fmt(v.checkin_time)}</div>
-    </div>`).join('') || '<p class="muted">No deliveries yet.</p>';
+      <div class="nm">${escapeHtml(v.school_name)}</div>
+      <div class="sub">${escapeHtml(v.block)} · by ${escapeHtml(v.driver_name)} · ${fmt(v.checkin_time)}</div>
+    </div>`).join('') || '<p class="muted">No deliveries yet.</p>');
+
+  const clear = el('visitList').querySelector('[data-clear-driver]');
+  if (clear) clear.addEventListener('click', () => {
+    selectedDriverId = null;
+    selectedDriverName = '';
+    renderVisitList();
+  });
 
   el('visitList').querySelectorAll('[data-udise]').forEach((node) => {
     node.addEventListener('click', () => openPhotos(node.dataset.udise));
@@ -97,17 +123,18 @@ async function loadOverview() {
 
   el('driverList').innerHTML = o.drivers.map((d) => `
     <div class="driver-item">
-      <div class="nm">${d.name || d.username}
+      <div class="nm"><span class="driver-name" data-driver-deliveries="${d.id}" data-driver-name="${escapeHtml(d.name || d.username)}">${escapeHtml(d.name || d.username)}</span>
         <span class="pill ${d.active ? 'on' : 'off'}">${d.active ? 'active' : 'disabled'}</span>
         <span class="pill ${d.can_test_mode ? 'on' : 'off'}">${d.can_test_mode ? 'test on' : 'test off'}</span>
       </div>
-      <div class="sub">@${d.username} · ${d.assigned_block || 'no block'} · ${d.visited_count} delivered · ${d.km} km
+      <div class="sub">@${escapeHtml(d.username)} · ${escapeHtml(d.assigned_block || 'no block')} · ${d.visited_count} delivered · ${d.km} km
         ${d.last_seen ? '· seen ' + fmt(d.last_seen) : '· never seen'}</div>
       <div style="margin-top:6px;display:flex;gap:6px">
         <button class="secondary" style="padding:4px 8px;font-size:12px" data-toggle="${d.id}" data-active="${d.active}">${d.active ? 'Disable' : 'Enable'}</button>
-        <button class="secondary" style="padding:4px 8px;font-size:12px" data-reset="${d.id}">Reset pw</button>
+        <button class="secondary" style="padding:4px 8px;font-size:12px" data-reset="${d.id}">Reset password</button>
         <button class="secondary" style="padding:4px 8px;font-size:12px" data-block="${d.id}">Block</button>
         <button class="secondary" style="padding:4px 8px;font-size:12px" data-test="${d.id}" data-test-active="${d.can_test_mode}">${d.can_test_mode ? 'Test off' : 'Test on'}</button>
+        <button class="secondary danger" style="padding:4px 8px;font-size:12px" data-delete="${d.id}" data-delete-name="${escapeHtml(d.name || d.username)}">Delete</button>
         ${d.last_lat ? `<button class="secondary" style="padding:4px 8px;font-size:12px" data-focus="${d.last_lat},${d.last_lon}">Locate</button>` : ''}
       </div>
     </div>`).join('') || '<p class="muted">No drivers yet.</p>';
@@ -129,6 +156,11 @@ async function loadOverview() {
     });
     loadOverview();
   }));
+  el('driverList').querySelectorAll('[data-driver-deliveries]').forEach((node) => node.addEventListener('click', () => {
+    selectedDriverId = Number(node.dataset.driverDeliveries);
+    selectedDriverName = node.dataset.driverName || 'Driver';
+    renderVisitList();
+  }));
   el('driverList').querySelectorAll('[data-reset]').forEach((b) => b.addEventListener('click', async () => {
     const pw = prompt('New password for this driver:');
     if (!pw) return;
@@ -137,6 +169,16 @@ async function loadOverview() {
       body: JSON.stringify({ password: pw }),
     });
     alert(r.ok ? 'Password updated.' : 'Failed to update.');
+  }));
+  el('driverList').querySelectorAll('[data-delete]').forEach((b) => b.addEventListener('click', async () => {
+    if (!confirm(`Delete ${b.dataset.deleteName}? This removes the login but keeps old delivery records.`)) return;
+    const r = await fetch('/api/admin/drivers/' + b.dataset.delete, { method: 'DELETE' });
+    if (!r.ok) alert('Failed to delete driver.');
+    if (selectedDriverId === Number(b.dataset.delete)) {
+      selectedDriverId = null;
+      selectedDriverName = '';
+    }
+    refreshAll();
   }));
   el('driverList').querySelectorAll('[data-block]').forEach((b) => b.addEventListener('click', async () => {
     const assigned_block = prompt('Assign block:\n' + blocks.join('\n'));

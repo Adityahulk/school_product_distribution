@@ -30,6 +30,7 @@ db.exec(`
     assigned_block TEXT,
     can_test_mode INTEGER NOT NULL DEFAULT 0,
     active        INTEGER NOT NULL DEFAULT 1,
+    deleted_at    TEXT,
     created_at    TEXT NOT NULL DEFAULT (datetime('now'))
   );
 
@@ -68,6 +69,9 @@ if (!driverColumns.includes('assigned_block')) {
 }
 if (!driverColumns.includes('can_test_mode')) {
   db.exec('ALTER TABLE drivers ADD COLUMN can_test_mode INTEGER NOT NULL DEFAULT 0');
+}
+if (!driverColumns.includes('deleted_at')) {
+  db.exec('ALTER TABLE drivers ADD COLUMN deleted_at TEXT');
 }
 
 // Seed the fixed school list (idempotent: insert-or-replace the canonical reference data).

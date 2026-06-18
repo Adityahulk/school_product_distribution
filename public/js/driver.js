@@ -10,6 +10,7 @@ let nextSchool = null;
 let lastSentPos = null;
 let routeLine = null;
 let testModeAllowed = TEST_MODE_FROM_URL;
+let testModeActive = TEST_MODE_FROM_URL;
 
 const el = (id) => document.getElementById(id);
 
@@ -96,6 +97,7 @@ async function refreshRoute() {
 
 async function sendLocation() {
   if (!myPos) return;
+  if (testModeActive) return;
   // Throttle: only send when moved enough or first fix.
   if (lastSentPos) {
     const dLat = Math.abs(lastSentPos.lat - myPos.lat);
@@ -136,6 +138,7 @@ function onPosition(p) {
 function startGeo() {
   if (TEST_MODE_FROM_URL) {
     el('testPanel').hidden = false;
+    testModeActive = true;
     setPosition(GUJARAT.lat, GUJARAT.lon, 30);
     return;
   }
@@ -158,11 +161,13 @@ el('navBtn').addEventListener('click', () => {
 
 el('testGujaratBtn').addEventListener('click', () => {
   if (!testModeAllowed) return;
+  testModeActive = true;
   setPosition(GUJARAT.lat, GUJARAT.lon, 30);
 });
 
 el('testArriveBtn').addEventListener('click', () => {
   if (!testModeAllowed || !nextSchool) return;
+  testModeActive = true;
   setPosition(nextSchool.lat, nextSchool.lon, 8);
 });
 
@@ -184,6 +189,7 @@ el('checkinForm').addEventListener('submit', async (e) => {
   const fd = new FormData(e.target);
   fd.append('udise', nextSchool.udise);
   if (myPos) { fd.append('lat', myPos.lat); fd.append('lon', myPos.lon); }
+  if (testModeActive) fd.append('test_mode', '1');
   el('ciSubmit').disabled = true;
   el('ciErr').textContent = '';
   try {
@@ -191,6 +197,10 @@ el('checkinForm').addEventListener('submit', async (e) => {
     const data = await res.json();
     if (!res.ok) { el('ciErr').textContent = data.error || 'Check-in failed'; return; }
     modalBg.classList.remove('show');
+    if (data.test) {
+      alert('Test delivery submitted. It was not counted.');
+      return;
+    }
     await loadSchools();
     await refreshRoute();
   } catch (err) {

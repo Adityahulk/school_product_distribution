@@ -42,6 +42,7 @@ router.post(
   upload.fields([{ name: 'school_photo', maxCount: 1 }, { name: 'tables_photo', maxCount: 1 }]),
   (req, res) => {
     const { udise } = req.body;
+    const testMode = req.body.test_mode === '1';
     const lat = parseFloat(req.body.lat);
     const lon = parseFloat(req.body.lon);
     const schoolFile = req.files && req.files.school_photo && req.files.school_photo[0];
@@ -62,6 +63,16 @@ router.post(
     if (school.block !== assignedBlock) {
       cleanup();
       return res.status(403).json({ error: 'school is outside assigned block' });
+    }
+
+    if (testMode) {
+      const driver = db.prepare('SELECT can_test_mode FROM drivers WHERE id = ? AND deleted_at IS NULL').get(req.user.id);
+      if (!driver || !driver.can_test_mode) {
+        cleanup();
+        return res.status(403).json({ error: 'test mode is not enabled for this driver' });
+      }
+      cleanup();
+      return res.json({ ok: true, test: true, udise });
     }
 
     const existing = db.prepare('SELECT id FROM visits WHERE udise = ?').get(udise);

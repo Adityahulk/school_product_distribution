@@ -18,7 +18,7 @@ router.post('/drivers', requireAdmin, (req, res) => {
   if (!username || !password || !assigned_block) return res.status(400).json({ error: 'username, password and block required' });
   if (String(password).length < 4) return res.status(400).json({ error: 'password too short' });
   if (!isValidBlock(assigned_block)) return res.status(400).json({ error: 'unknown block' });
-  const exists = db.prepare('SELECT id FROM drivers WHERE username = ?').get(username);
+  const exists = db.prepare('SELECT id FROM drivers WHERE username = ? AND deleted_at IS NULL').get(username);
   if (exists) return res.status(409).json({ error: 'username already exists' });
   const hash = bcrypt.hashSync(String(password), 10);
   const info = db.prepare('INSERT INTO drivers (username, password_hash, name, assigned_block, can_test_mode) VALUES (?,?,?,?,?)')
@@ -27,7 +27,12 @@ router.post('/drivers', requireAdmin, (req, res) => {
 });
 
 router.get('/drivers', requireAdmin, (req, res) => {
-  const rows = db.prepare('SELECT id, username, name, assigned_block, can_test_mode, active, created_at FROM drivers ORDER BY id').all();
+  const rows = db.prepare(`
+    SELECT id, username, name, assigned_block, can_test_mode, active, created_at
+    FROM drivers
+    WHERE deleted_at IS NULL
+    ORDER BY id
+  `).all();
   for (const r of rows) {
     r.active = !!r.active;
     r.can_test_mode = !!r.can_test_mode;
@@ -38,7 +43,7 @@ router.get('/drivers', requireAdmin, (req, res) => {
 // Deactivate / reactivate / reset password.
 router.patch('/drivers/:id', requireAdmin, (req, res) => {
   const id = parseInt(req.params.id, 10);
-  const driver = db.prepare('SELECT id FROM drivers WHERE id = ?').get(id);
+  const driver = db.prepare('SELECT id FROM drivers WHERE id = ? AND deleted_at IS NULL').get(id);
   if (!driver) return res.status(404).json({ error: 'driver not found' });
   const { active, password, assigned_block, can_test_mode } = req.body || {};
   if (typeof active === 'boolean') {
@@ -58,6 +63,21 @@ router.patch('/drivers/:id', requireAdmin, (req, res) => {
   res.json({ ok: true });
 });
 
+router.delete('/drivers/:id', requireAdmin, (req, res) => {
+  const id = parseInt(req.params.id, 10);
+  const driver = db.prepare('SELECT id, username FROM drivers WHERE id = ? AND deleted_at IS NULL').get(id);
+  if (!driver) return res.status(404).json({ error: 'driver not found' });
+  const stamp = new Date().toISOString();
+  db.prepare(`
+    UPDATE drivers
+    SET active = 0,
+        deleted_at = ?,
+        username = ?
+    WHERE id = ?
+  `).run(stamp, `${driver.username}__deleted_${id}`, id);
+  res.json({ ok: true });
+});
+
 // --- Monitoring overview ---
 router.get('/overview', requireAdmin, (req, res) => {
   const totalSchools = db.prepare('SELECT COUNT(*) c FROM schools').get().c;
@@ -70,6 +90,7 @@ router.get('/overview', requireAdmin, (req, res) => {
       (SELECT COUNT(*) FROM visits v WHERE v.driver_id = d.id) AS visited_count
     FROM drivers d
     LEFT JOIN driver_distance dd ON dd.driver_id = d.id
+    WHERE d.deleted_at IS NULL
     ORDER BY d.id
   `).all();
 
