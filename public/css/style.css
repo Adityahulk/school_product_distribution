@@ -71,6 +71,7 @@ label.check-row {
 .next-card .meta { color: var(--muted); font-size: 13px; }
 .row { display: flex; gap: 10px; margin-top: 12px; }
 .row > * { flex: 1; }
+.wide-action { width: 100%; margin-top: 10px; }
 .row.compact { margin-top: 8px; }
 .row.compact button { min-height: 40px; padding: 8px 10px; font-size: 13px; }
 .test-panel {

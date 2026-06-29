@@ -72,7 +72,7 @@ function renderVisitList() {
   el('visitList').innerHTML = header + (visits.map((v) => `
     <div class="driver-item" style="cursor:pointer" data-udise="${v.udise}">
       <div class="nm">${escapeHtml(v.school_name)}</div>
-      <div class="sub">${escapeHtml(v.block)} · by ${escapeHtml(v.driver_name)} · ${fmt(v.checkin_time)}</div>
+      <div class="sub">${escapeHtml(v.block)} · by ${escapeHtml(v.driver_name)} · submitted by ${formatSubmittedBy(v.submitted_by)} · ${fmt(v.checkin_time)}</div>
     </div>`).join('') || '<p class="muted">No deliveries yet.</p>');
 
   const clear = el('visitList').querySelector('[data-clear-driver]');
@@ -207,7 +207,7 @@ function openPhotos(udise) {
   const v = visitsByUdise[udise];
   if (!v) return;
   el('mTitle').textContent = v.school_name;
-  el('mSub').textContent = `${v.block} · delivered by ${v.driver_name} · ${fmt(v.checkin_time)}`;
+  el('mSub').textContent = `${v.block} · UDISE ${v.udise} · driver ${v.driver_name} · submitted by ${formatSubmittedBy(v.submitted_by)} · ${fmt(v.checkin_time)}`;
   el('mSchool').src = v.school_photo_url;
   el('mDelivery').src = v.delivery_photo_url || v.tables_photo_url;
   el('mCertificate').src = v.certificate_photo_url || '';
@@ -244,6 +244,10 @@ function fmt(t) {
   const d = new Date(t.replace(' ', 'T') + (t.includes('T') ? '' : 'Z'));
   if (isNaN(d)) return t;
   return d.toLocaleString();
+}
+
+function formatSubmittedBy(value) {
+  return value === 'admin' ? 'admin' : 'driver';
 }
 
 function escapeHtml(s) {

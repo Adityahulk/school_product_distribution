@@ -11,6 +11,8 @@ let lastSentPos = null;
 let routeLine = null;
 let testModeAllowed = TEST_MODE_FROM_URL;
 let testModeActive = TEST_MODE_FROM_URL;
+let blockSchools = [];
+let assignedBlock = '';
 
 const el = (id) => document.getElementById(id);
 
@@ -45,7 +47,9 @@ async function loadSchools() {
     return;
   }
   const data = await res.json();
-  el('blockName').textContent = data.assigned_block || 'All';
+  assignedBlock = data.assigned_block || '';
+  blockSchools = data.schools || [];
+  el('blockName').textContent = assignedBlock || 'All';
   el('totalCount').textContent = data.total;
   schoolLayer.clearLayers();
   let done = 0;
@@ -159,6 +163,60 @@ el('navBtn').addEventListener('click', () => {
   window.open(url, '_blank');
 });
 
+// --- Manual school completion ---
+const manualModalBg = el('manualModalBg');
+
+el('manualBtn').addEventListener('click', () => {
+  el('manualErr').textContent = '';
+  el('manualForm').reset();
+  el('manualBlock').textContent = assignedBlock
+    ? `Search pending schools in ${assignedBlock}.`
+    : 'Search pending schools in your assigned block.';
+  renderManualSchools('');
+  manualModalBg.classList.add('show');
+});
+
+el('manualCancel').addEventListener('click', () => manualModalBg.classList.remove('show'));
+el('manualSearch').addEventListener('input', () => renderManualSchools(el('manualSearch').value));
+
+function renderManualSchools(term) {
+  const q = String(term || '').trim().toLowerCase();
+  const pending = blockSchools.filter((s) => !s.visited && (
+    !q ||
+    String(s.name).toLowerCase().includes(q) ||
+    String(s.udise).includes(q) ||
+    String(s.block).toLowerCase().includes(q)
+  ));
+  el('manualSchool').innerHTML = '<option value="">Select pending school</option>' +
+    pending.slice(0, 80).map((s) =>
+      `<option value="${escapeHtml(s.udise)}">${escapeHtml(s.name)} · ${escapeHtml(s.udise)}</option>`
+    ).join('');
+}
+
+el('manualForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const udise = el('manualSchool').value;
+  if (!udise) { el('manualErr').textContent = 'Select a school first.'; return; }
+  const fd = new FormData(e.target);
+  fd.append('udise', udise);
+  fd.append('manual_password', el('manualPassword').value);
+  if (myPos) { fd.append('lat', myPos.lat); fd.append('lon', myPos.lon); }
+  el('manualSubmit').disabled = true;
+  el('manualErr').textContent = '';
+  try {
+    const res = await fetch('/api/checkin', { method: 'POST', body: fd });
+    const data = await res.json();
+    if (!res.ok) { el('manualErr').textContent = data.error || 'Manual completion failed'; return; }
+    manualModalBg.classList.remove('show');
+    await loadSchools();
+    await refreshRoute();
+  } catch (err) {
+    el('manualErr').textContent = 'Upload failed — check connection.';
+  } finally {
+    el('manualSubmit').disabled = false;
+  }
+});
+
 el('testGujaratBtn').addEventListener('click', () => {
   if (!testModeAllowed) return;
   testModeActive = true;
@@ -235,3 +293,9 @@ async function initDriver() {
 }
 
 initDriver();
+
+function escapeHtml(s) {
+  return String(s || '').replace(/[&<>"']/g, (c) => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  }[c]));
+}

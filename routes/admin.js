@@ -124,7 +124,7 @@ router.get('/overview', requireAdmin, (req, res) => {
 router.get('/visits', requireAdmin, (req, res) => {
   const rows = db.prepare(`
     SELECT v.id, v.udise, v.checkin_lat, v.checkin_lon, v.checkin_time,
-           v.school_photo, v.tables_photo, v.certificate_photo,
+           v.school_photo, v.tables_photo, v.certificate_photo, v.submitted_by,
            sc.name AS school_name, sc.block, sc.lat AS school_lat, sc.lon AS school_lon,
            d.username AS driver_username, d.name AS driver_name, d.id AS driver_id
     FROM visits v

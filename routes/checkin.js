@@ -10,6 +10,7 @@ const { getDriverBlock } = require('../lib/blocks');
 
 const router = express.Router();
 const UPLOAD_ROOT = path.join(__dirname, '..', 'uploads');
+const MANUAL_PASSWORD = process.env.MANUAL_CHECKIN_PASSWORD || '12321';
 
 const storage = multer.diskStorage({
   destination(req, file, cb) {
@@ -48,6 +49,7 @@ router.post(
   (req, res) => {
     const { udise } = req.body;
     const testMode = req.body.test_mode === '1';
+    const manualMode = !!req.body.manual_password;
     const lat = parseFloat(req.body.lat);
     const lon = parseFloat(req.body.lon);
     const schoolFile = req.files && req.files.school_photo && req.files.school_photo[0];
@@ -65,6 +67,10 @@ router.post(
     if (!schoolFile || !deliveryFile || !certificateFile) {
       cleanup();
       return res.status(400).json({ error: 'school_photo, delivery_photo and certificate_photo are required' });
+    }
+    if (manualMode && String(req.body.manual_password) !== MANUAL_PASSWORD) {
+      cleanup();
+      return res.status(403).json({ error: 'manual completion password is incorrect' });
     }
 
     const assignedBlock = getDriverBlock(req.user.id);
@@ -91,12 +97,13 @@ router.post(
     if (existing) { cleanup(); return res.status(409).json({ error: 'school already marked visited' }); }
 
     const rel = (f) => path.relative(UPLOAD_ROOT, f.path).split(path.sep).join('/');
+    const submittedBy = manualMode ? 'admin' : 'driver';
     try {
       db.prepare(`
-        INSERT INTO visits (udise, driver_id, checkin_lat, checkin_lon, school_photo, tables_photo, certificate_photo)
-        VALUES (?,?,?,?,?,?,?)
+        INSERT INTO visits (udise, driver_id, checkin_lat, checkin_lon, school_photo, tables_photo, certificate_photo, submitted_by)
+        VALUES (?,?,?,?,?,?,?,?)
       `).run(udise, req.user.id, Number.isFinite(lat) ? lat : null,
-             Number.isFinite(lon) ? lon : null, rel(schoolFile), rel(deliveryFile), rel(certificateFile));
+             Number.isFinite(lon) ? lon : null, rel(schoolFile), rel(deliveryFile), rel(certificateFile), submittedBy);
     } catch (e) {
       cleanup();
       // UNIQUE race: someone else just checked in.
