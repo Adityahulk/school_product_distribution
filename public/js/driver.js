@@ -74,6 +74,7 @@ async function refreshRoute() {
     el('nextMeta').textContent = '';
     el('navBtn').disabled = true;
     el('checkinBtn').disabled = true;
+    el('issueBtn').disabled = true;
     if (routeLine) { map.removeLayer(routeLine); routeLine = null; }
     return;
   }
@@ -83,6 +84,7 @@ async function refreshRoute() {
   el('nextName').textContent = nextSchool.name;
   el('nextMeta').textContent = `${nextSchool.block} · ${nextSchool.tables} tables · ${km} km away · ${data.remaining} schools left`;
   el('navBtn').disabled = false;
+  el('issueBtn').disabled = false;
   // Enable check-in only when close (within 300 m) — prevents remote check-ins.
   const close = nextSchool.legMeters <= 300;
   el('checkinBtn').disabled = !close;
@@ -163,57 +165,38 @@ el('navBtn').addEventListener('click', () => {
   window.open(url, '_blank');
 });
 
-// --- Manual school completion ---
-const manualModalBg = el('manualModalBg');
+// --- School issue / closed report ---
+const issueModalBg = el('issueModalBg');
 
-el('manualBtn').addEventListener('click', () => {
-  el('manualErr').textContent = '';
-  el('manualForm').reset();
-  el('manualBlock').textContent = assignedBlock
-    ? `Search pending schools in ${assignedBlock}.`
-    : 'Search pending schools in your assigned block.';
-  renderManualSchools('');
-  manualModalBg.classList.add('show');
+el('issueBtn').addEventListener('click', () => {
+  if (!nextSchool) return;
+  el('issueTitle').textContent = nextSchool.name;
+  el('issueSub').textContent = `${nextSchool.block} · this school will be hidden until admin toggles it on`;
+  el('issueErr').textContent = '';
+  el('issueForm').reset();
+  issueModalBg.classList.add('show');
 });
 
-el('manualCancel').addEventListener('click', () => manualModalBg.classList.remove('show'));
-el('manualSearch').addEventListener('input', () => renderManualSchools(el('manualSearch').value));
+el('issueCancel').addEventListener('click', () => issueModalBg.classList.remove('show'));
 
-function renderManualSchools(term) {
-  const q = String(term || '').trim().toLowerCase();
-  const pending = blockSchools.filter((s) => !s.visited && (
-    !q ||
-    String(s.name).toLowerCase().includes(q) ||
-    String(s.udise).includes(q) ||
-    String(s.block).toLowerCase().includes(q)
-  ));
-  el('manualSchool').innerHTML = '<option value="">Select pending school</option>' +
-    pending.slice(0, 80).map((s) =>
-      `<option value="${escapeHtml(s.udise)}">${escapeHtml(s.name)} · ${escapeHtml(s.udise)}</option>`
-    ).join('');
-}
-
-el('manualForm').addEventListener('submit', async (e) => {
+el('issueForm').addEventListener('submit', async (e) => {
   e.preventDefault();
-  const udise = el('manualSchool').value;
-  if (!udise) { el('manualErr').textContent = 'Select a school first.'; return; }
+  if (!nextSchool) return;
   const fd = new FormData(e.target);
-  fd.append('udise', udise);
-  fd.append('manual_password', el('manualPassword').value);
-  if (myPos) { fd.append('lat', myPos.lat); fd.append('lon', myPos.lon); }
-  el('manualSubmit').disabled = true;
-  el('manualErr').textContent = '';
+  fd.append('udise', nextSchool.udise);
+  el('issueSubmit').disabled = true;
+  el('issueErr').textContent = '';
   try {
-    const res = await fetch('/api/checkin', { method: 'POST', body: fd });
+    const res = await fetch('/api/school-issue', { method: 'POST', body: fd });
     const data = await res.json();
-    if (!res.ok) { el('manualErr').textContent = data.error || 'Manual completion failed'; return; }
-    manualModalBg.classList.remove('show');
+    if (!res.ok) { el('issueErr').textContent = data.error || 'Issue submission failed'; return; }
+    issueModalBg.classList.remove('show');
     await loadSchools();
     await refreshRoute();
   } catch (err) {
-    el('manualErr').textContent = 'Upload failed — check connection.';
+    el('issueErr').textContent = 'Upload failed — check connection.';
   } finally {
-    el('manualSubmit').disabled = false;
+    el('issueSubmit').disabled = false;
   }
 });
 

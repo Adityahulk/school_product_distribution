@@ -13,6 +13,7 @@ const schoolRoutes = require('./routes/schools');
 const routeRoutes = require('./routes/route');
 const locationRoutes = require('./routes/location');
 const checkinRoutes = require('./routes/checkin');
+const issueRoutes = require('./routes/issues');
 const adminRoutes = require('./routes/admin');
 
 const app = express();
@@ -26,6 +27,7 @@ app.use('/api', schoolRoutes);
 app.use('/api', routeRoutes);
 app.use('/api', locationRoutes);
 app.use('/api', checkinRoutes);
+app.use('/api', issueRoutes);
 app.use('/api/admin', adminRoutes);
 
 // Delivery photos — only for logged-in users.

@@ -21,15 +21,21 @@ router.get('/schools', (req, res) => {
     SELECT sc.udise, sc.no, sc.block, sc.name, sc.category, sc.tables, sc.chairs, sc.lat, sc.lon,
            v.id IS NOT NULL AS visited,
            v.driver_id AS visited_by,
-           v.checkin_time AS visited_at
+           v.checkin_time AS visited_at,
+           h.udise IS NOT NULL AS held
     FROM schools sc
     LEFT JOIN visits v ON v.udise = sc.udise
+    LEFT JOIN school_holds h ON h.udise = sc.udise
     WHERE (? IS NULL OR sc.block = ?)
     ORDER BY sc.no
   `).all(assignedBlock, assignedBlock);
 
-  for (const r of rows) r.visited = !!r.visited;
-  res.json({ total: rows.length, assigned_block: assignedBlock, schools: rows });
+  for (const r of rows) {
+    r.visited = !!r.visited;
+    r.held = !!r.held;
+  }
+  const visibleRows = s.role === 'driver' ? rows.filter((r) => !r.held) : rows;
+  res.json({ total: visibleRows.length, assigned_block: assignedBlock, schools: visibleRows });
 });
 
 module.exports = router;

@@ -63,6 +63,15 @@ db.exec(`
     last_lon  REAL,
     updated_at TEXT
   );
+
+  CREATE TABLE IF NOT EXISTS school_holds (
+    udise       TEXT PRIMARY KEY REFERENCES schools(udise),
+    driver_id   INTEGER NOT NULL REFERENCES drivers(id),
+    remarks     TEXT,
+    photo_one   TEXT NOT NULL,
+    photo_two   TEXT,
+    created_at  TEXT NOT NULL DEFAULT (datetime('now'))
+  );
 `);
 
 const driverColumns = db.prepare('PRAGMA table_info(drivers)').all().map((c) => c.name);

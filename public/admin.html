@@ -33,6 +33,35 @@
         <div id="driverList"></div>
       </details>
 
+      <details class="admin-section">
+        <summary>Manual completion</summary>
+        <form id="manualAdminForm">
+          <select id="manualDriver" required>
+            <option value="">Select driver</option>
+          </select>
+          <div style="height:6px"></div>
+          <input id="manualSchoolSearch" placeholder="Search school" autocomplete="off" />
+          <div style="height:6px"></div>
+          <select id="manualAdminSchool" required>
+            <option value="">Select school</option>
+          </select>
+          <label>School name board photo</label>
+          <input type="file" name="school_photo" accept="image/*" required />
+          <label>Delivery photo</label>
+          <input type="file" name="delivery_photo" accept="image/*" required />
+          <label>Certificate photo</label>
+          <input type="file" name="certificate_photo" accept="image/*" required />
+          <div style="height:8px"></div>
+          <button type="submit" class="green" id="manualAdminSubmit" style="width:100%">Complete for driver</button>
+          <p class="err" id="manualAdminErr"></p>
+        </form>
+      </details>
+
+      <details class="admin-section">
+        <summary>Toggled off schools</summary>
+        <div id="heldSchoolList"></div>
+      </details>
+
       <h2>Add driver</h2>
       <form id="addForm">
         <input id="dName" placeholder="Full name" />

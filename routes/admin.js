@@ -2,11 +2,37 @@
 
 const express = require('express');
 const bcrypt = require('bcryptjs');
+const multer = require('multer');
+const path = require('path');
 const db = require('../db');
 const { requireAdmin } = require('../lib/auth');
 const { listBlocks, isValidBlock } = require('../lib/blocks');
 
 const router = express.Router();
+const UPLOAD_ROOT = path.join(__dirname, '..', 'uploads');
+
+const storage = multer.diskStorage({
+  destination(req, file, cb) {
+    const udise = (req.body.udise || 'unknown').replace(/[^0-9A-Za-z]/g, '');
+    const dir = path.join(UPLOAD_ROOT, udise);
+    require('fs').mkdirSync(dir, { recursive: true });
+    cb(null, dir);
+  },
+  filename(req, file, cb) {
+    const stamp = Date.now();
+    const ext = (path.extname(file.originalname) || '.jpg').toLowerCase();
+    cb(null, `${file.fieldname}_admin_${stamp}${ext}`);
+  },
+});
+
+const upload = multer({
+  storage,
+  limits: { fileSize: 12 * 1024 * 1024 },
+  fileFilter(req, file, cb) {
+    if (/^image\//.test(file.mimetype)) cb(null, true);
+    else cb(new Error('only image uploads are allowed'));
+  },
+});
 
 // --- Driver management ---
 router.get('/blocks', requireAdmin, (req, res) => {
@@ -75,6 +101,85 @@ router.delete('/drivers/:id', requireAdmin, (req, res) => {
         username = ?
     WHERE id = ?
   `).run(stamp, `${driver.username}__deleted_${id}`, id);
+  res.json({ ok: true });
+});
+
+router.post(
+  '/manual-checkin',
+  requireAdmin,
+  upload.fields([
+    { name: 'school_photo', maxCount: 1 },
+    { name: 'delivery_photo', maxCount: 1 },
+    { name: 'certificate_photo', maxCount: 1 },
+  ]),
+  (req, res) => {
+    const driverId = parseInt(req.body.driver_id, 10);
+    const { udise } = req.body;
+    const schoolFile = req.files && req.files.school_photo && req.files.school_photo[0];
+    const deliveryFile = req.files && req.files.delivery_photo && req.files.delivery_photo[0];
+    const certificateFile = req.files && req.files.certificate_photo && req.files.certificate_photo[0];
+
+    const cleanup = () => {
+      [schoolFile, deliveryFile, certificateFile].forEach((f) => { if (f) require('fs').unlink(f.path, () => {}); });
+    };
+
+    if (!driverId || !udise) { cleanup(); return res.status(400).json({ error: 'driver and school required' }); }
+    if (!schoolFile || !deliveryFile || !certificateFile) {
+      cleanup();
+      return res.status(400).json({ error: 'all three photos are required' });
+    }
+
+    const driver = db.prepare('SELECT id, assigned_block FROM drivers WHERE id = ? AND deleted_at IS NULL').get(driverId);
+    if (!driver) { cleanup(); return res.status(404).json({ error: 'driver not found' }); }
+    if (!driver.assigned_block) { cleanup(); return res.status(400).json({ error: 'driver has no assigned block' }); }
+
+    const school = db.prepare('SELECT udise, block FROM schools WHERE udise = ?').get(udise);
+    if (!school) { cleanup(); return res.status(404).json({ error: 'unknown school' }); }
+    if (school.block !== driver.assigned_block) {
+      cleanup();
+      return res.status(403).json({ error: 'school is outside driver assigned block' });
+    }
+
+    const existing = db.prepare('SELECT id FROM visits WHERE udise = ?').get(udise);
+    if (existing) { cleanup(); return res.status(409).json({ error: 'school already marked delivered' }); }
+
+    const rel = (f) => path.relative(UPLOAD_ROOT, f.path).split(path.sep).join('/');
+    try {
+      db.prepare(`
+        INSERT INTO visits (udise, driver_id, checkin_lat, checkin_lon, school_photo, tables_photo, certificate_photo, submitted_by)
+        VALUES (?,?,?,?,?,?,?,?)
+      `).run(udise, driverId, null, null, rel(schoolFile), rel(deliveryFile), rel(certificateFile), 'admin');
+      db.prepare('DELETE FROM school_holds WHERE udise = ?').run(udise);
+    } catch (e) {
+      cleanup();
+      if (String(e.message).includes('UNIQUE')) return res.status(409).json({ error: 'school already marked delivered' });
+      throw e;
+    }
+
+    res.json({ ok: true, udise });
+  }
+);
+
+router.get('/held-schools', requireAdmin, (req, res) => {
+  const rows = db.prepare(`
+    SELECT h.udise, h.driver_id, h.remarks, h.photo_one, h.photo_two, h.created_at,
+           sc.name AS school_name, sc.block,
+           d.name AS driver_name, d.username AS driver_username
+    FROM school_holds h
+    JOIN schools sc ON sc.udise = h.udise
+    JOIN drivers d ON d.id = h.driver_id
+    ORDER BY h.created_at DESC
+  `).all();
+  for (const r of rows) {
+    r.photo_one_url = '/uploads/' + r.photo_one;
+    r.photo_two_url = r.photo_two ? '/uploads/' + r.photo_two : null;
+  }
+  res.json({ schools: rows });
+});
+
+router.delete('/held-schools/:udise', requireAdmin, (req, res) => {
+  const info = db.prepare('DELETE FROM school_holds WHERE udise = ?').run(req.params.udise);
+  if (!info.changes) return res.status(404).json({ error: 'school is not toggled off' });
   res.json({ ok: true });
 });
 

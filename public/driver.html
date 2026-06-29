@@ -30,7 +30,7 @@
         <button class="secondary" id="navBtn" disabled>🧭 Navigate</button>
         <button class="green" id="checkinBtn" disabled>📷 Check in &amp; deliver</button>
       </div>
-      <button class="secondary wide-action" id="manualBtn" type="button">Manual school completion</button>
+      <button class="secondary wide-action" id="issueBtn" type="button" disabled>School closed / issue</button>
       <div class="test-panel" id="testPanel" hidden>
         <div class="label">Test mode</div>
         <div class="row compact">
@@ -60,28 +60,20 @@
     </form>
   </div>
 
-  <div class="modal-bg" id="manualModalBg">
-    <form class="modal" id="manualForm">
-      <h3>Manual school completion</h3>
-      <p class="muted" id="manualBlock">Search pending schools in your assigned block.</p>
-      <label>Search school</label>
-      <input id="manualSearch" placeholder="Type school name or UDISE" autocomplete="off" />
-      <label>Select school</label>
-      <select id="manualSchool" required>
-        <option value="">Select pending school</option>
-      </select>
-      <label>Password</label>
-      <input id="manualPassword" type="password" inputmode="numeric" required />
-      <label>School name board photo</label>
-      <input type="file" name="school_photo" accept="image/*" capture="environment" required />
-      <label>Delivery photo</label>
-      <input type="file" name="delivery_photo" accept="image/*" capture="environment" required />
-      <label>Certificate photo</label>
-      <input type="file" name="certificate_photo" accept="image/*" capture="environment" required />
-      <p class="err" id="manualErr"></p>
+  <div class="modal-bg" id="issueModalBg">
+    <form class="modal" id="issueForm">
+      <h3 id="issueTitle">School closed / issue</h3>
+      <p class="muted" id="issueSub"></p>
+      <label>Remarks</label>
+      <textarea id="issueRemarks" name="remarks" rows="4" placeholder="School closed, no staff available, road blocked, etc."></textarea>
+      <label>Photo 1</label>
+      <input type="file" name="issue_photo_1" accept="image/*" capture="environment" required />
+      <label>Photo 2 (optional)</label>
+      <input type="file" name="issue_photo_2" accept="image/*" capture="environment" />
+      <p class="err" id="issueErr"></p>
       <div class="row">
-        <button type="button" class="secondary" id="manualCancel">Cancel</button>
-        <button type="submit" class="green" id="manualSubmit">Complete school</button>
+        <button type="button" class="secondary" id="issueCancel">Cancel</button>
+        <button type="submit" class="green" id="issueSubmit">Submit issue</button>
       </div>
     </form>
   </div>

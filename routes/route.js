@@ -25,7 +25,8 @@ router.get('/route/next', requireDriver, (req, res) => {
     SELECT sc.udise, sc.no, sc.block, sc.name, sc.category, sc.tables, sc.chairs, sc.lat, sc.lon
     FROM schools sc
     LEFT JOIN visits v ON v.udise = sc.udise
-    WHERE v.id IS NULL AND sc.block = ?
+    LEFT JOIN school_holds h ON h.udise = sc.udise
+    WHERE v.id IS NULL AND h.udise IS NULL AND sc.block = ?
   `).all(assignedBlock);
 
   if (unvisited.length === 0) {

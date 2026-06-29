@@ -36,6 +36,9 @@ let allVisits = [];
 let selectedDriverId = null;
 let selectedDriverName = '';
 let blocks = [];
+let adminDrivers = [];
+let adminSchools = [];
+let heldSchools = [];
 
 async function loadBlocks() {
   const res = await fetch('/api/admin/blocks');
@@ -91,8 +94,10 @@ async function loadSchools() {
   const res = await fetch('/api/schools');
   if (!res.ok) return;
   const data = await res.json();
+  adminSchools = data.schools || [];
+  renderManualAdminSchools();
   schoolLayer.clearLayers();
-  for (const s of data.schools) {
+  for (const s of adminSchools) {
     const m = L.marker([s.lat, s.lon], { icon: s.visited ? visitedIcon : pendingIcon });
     if (s.visited) {
       m.on('click', () => openPhotos(s.udise));
@@ -108,6 +113,7 @@ async function loadOverview() {
   const res = await fetch('/api/admin/overview');
   if (!res.ok) { if (res.status === 401) location.href = '/'; return; }
   const o = await res.json();
+  adminDrivers = o.drivers || [];
   el('kVisited').textContent = o.totalVisited;
   el('kRemaining').textContent = o.remaining;
   el('kTotal').textContent = o.totalSchools;
@@ -121,7 +127,9 @@ async function loadOverview() {
       </div>`;
   }).join('');
 
-  el('driverList').innerHTML = o.drivers.map((d) => `
+  renderManualDriverOptions();
+
+  el('driverList').innerHTML = adminDrivers.map((d) => `
     <div class="driver-item">
       <div class="nm"><span class="driver-name" data-driver-deliveries="${d.id}" data-driver-name="${escapeHtml(d.name || d.username)}">${escapeHtml(d.name || d.username)}</span>
         <span class="pill ${d.active ? 'on' : 'off'}">${d.active ? 'active' : 'disabled'}</span>
@@ -203,6 +211,60 @@ async function loadOverview() {
   }));
 }
 
+async function loadHeldSchools() {
+  const res = await fetch('/api/admin/held-schools');
+  if (!res.ok) { if (res.status === 401) location.href = '/'; return; }
+  const data = await res.json();
+  heldSchools = data.schools || [];
+  el('heldSchoolList').innerHTML = heldSchools.map((s) => `
+    <div class="driver-item">
+      <div class="nm">${escapeHtml(s.school_name)}</div>
+      <div class="sub">${escapeHtml(s.block)} · reported by ${escapeHtml(s.driver_name || s.driver_username)} · ${fmt(s.created_at)}</div>
+      <div class="sub">${escapeHtml(s.remarks || 'No remarks')}</div>
+      <div class="thumb-row">
+        <img src="${s.photo_one_url}" alt="issue photo 1" />
+        ${s.photo_two_url ? `<img src="${s.photo_two_url}" alt="issue photo 2" />` : ''}
+      </div>
+      <div style="margin-top:6px">
+        <button class="secondary" style="padding:4px 8px;font-size:12px" data-reopen="${s.udise}">Toggle on</button>
+      </div>
+    </div>
+  `).join('') || '<p class="muted">No toggled off schools.</p>';
+
+  el('heldSchoolList').querySelectorAll('[data-reopen]').forEach((b) => b.addEventListener('click', async () => {
+    const r = await fetch('/api/admin/held-schools/' + b.dataset.reopen, { method: 'DELETE' });
+    if (!r.ok) alert('Failed to toggle school on.');
+    refreshAll();
+  }));
+}
+
+function renderManualDriverOptions() {
+  const selected = el('manualDriver').value;
+  el('manualDriver').innerHTML = '<option value="">Select driver</option>' +
+    adminDrivers.map((d) =>
+      `<option value="${d.id}">${escapeHtml(d.name || d.username)} · ${escapeHtml(d.assigned_block || 'no block')}</option>`
+    ).join('');
+  if (selected) el('manualDriver').value = selected;
+  renderManualAdminSchools();
+}
+
+function renderManualAdminSchools() {
+  const driverId = Number(el('manualDriver').value);
+  const driver = adminDrivers.find((d) => d.id === driverId);
+  const q = String(el('manualSchoolSearch').value || '').trim().toLowerCase();
+  const schools = driver
+    ? adminSchools.filter((s) => !s.visited && s.block === driver.assigned_block && (
+      !q ||
+      String(s.name).toLowerCase().includes(q) ||
+      String(s.udise).includes(q)
+    ))
+    : [];
+  el('manualAdminSchool').innerHTML = '<option value="">Select school</option>' +
+    schools.slice(0, 100).map((s) =>
+      `<option value="${escapeHtml(s.udise)}">${escapeHtml(s.name)} · ${escapeHtml(s.udise)}</option>`
+    ).join('');
+}
+
 function openPhotos(udise) {
   const v = visitsByUdise[udise];
   if (!v) return;
@@ -234,6 +296,35 @@ el('addForm').addEventListener('submit', async (e) => {
   loadOverview();
 });
 
+el('manualDriver').addEventListener('change', renderManualAdminSchools);
+el('manualSchoolSearch').addEventListener('input', renderManualAdminSchools);
+
+el('manualAdminForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  el('manualAdminErr').textContent = '';
+  const driverId = el('manualDriver').value;
+  const udise = el('manualAdminSchool').value;
+  if (!driverId || !udise) {
+    el('manualAdminErr').textContent = 'Select driver and school first.';
+    return;
+  }
+  const fd = new FormData(e.target);
+  fd.append('driver_id', driverId);
+  fd.append('udise', udise);
+  el('manualAdminSubmit').disabled = true;
+  try {
+    const res = await fetch('/api/admin/manual-checkin', { method: 'POST', body: fd });
+    const data = await res.json();
+    if (!res.ok) { el('manualAdminErr').textContent = data.error || 'Manual completion failed'; return; }
+    e.target.reset();
+    await refreshAll();
+  } catch (err) {
+    el('manualAdminErr').textContent = 'Upload failed — check connection.';
+  } finally {
+    el('manualAdminSubmit').disabled = false;
+  }
+});
+
 el('logout').addEventListener('click', async () => {
   await fetch('/api/logout', { method: 'POST' });
   location.href = '/';
@@ -256,7 +347,13 @@ function escapeHtml(s) {
   }[c]));
 }
 
-function refreshAll() { loadBlocks(); loadOverview(); loadSchools(); loadVisits(); }
+async function refreshAll() {
+  await loadBlocks();
+  await loadOverview();
+  await loadSchools();
+  await loadVisits();
+  await loadHeldSchools();
+}
 
 initMap();
 refreshAll();
