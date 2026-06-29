@@ -50,8 +50,10 @@
       <input type="file" name="school_photo" accept="image/*" capture="environment" required />
       <label>Delivery photo</label>
       <input type="file" name="delivery_photo" accept="image/*" capture="environment" required />
-      <label>Certificate photo</label>
-      <input type="file" name="certificate_photo" accept="image/*" capture="environment" required />
+      <label>Certificate photo (optional)</label>
+      <input type="file" name="certificate_photo" accept="image/*" capture="environment" />
+      <label>Certificate remarks</label>
+      <textarea name="certificate_remarks" rows="3" placeholder="Certificate not received but tables delivered"></textarea>
       <p class="err" id="ciErr"></p>
       <div class="row">
         <button type="button" class="secondary" id="ciCancel">Cancel</button>

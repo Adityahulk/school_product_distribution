@@ -35,7 +35,7 @@ const upload = multer({
 });
 
 // POST /api/checkin (multipart)
-// fields: udise, lat, lon ; files: school_photo, delivery_photo, certificate_photo
+// fields: udise, lat, lon, certificate_remarks ; files: school_photo, delivery_photo, optional certificate_photo
 router.post(
   '/checkin',
   requireDriver,
@@ -56,15 +56,16 @@ router.post(
       (req.files.tables_photo && req.files.tables_photo[0])
     );
     const certificateFile = req.files && req.files.certificate_photo && req.files.certificate_photo[0];
+    const certificateRemarks = String(req.body.certificate_remarks || '').trim();
 
     const cleanup = () => {
       [schoolFile, deliveryFile, certificateFile].forEach((f) => { if (f) fs.unlink(f.path, () => {}); });
     };
 
     if (!udise) { cleanup(); return res.status(400).json({ error: 'udise required' }); }
-    if (!schoolFile || !deliveryFile || !certificateFile) {
+    if (!schoolFile || !deliveryFile) {
       cleanup();
-      return res.status(400).json({ error: 'school_photo, delivery_photo and certificate_photo are required' });
+      return res.status(400).json({ error: 'school_photo and delivery_photo are required' });
     }
 
     const assignedBlock = getDriverBlock(req.user.id);
@@ -94,12 +95,16 @@ router.post(
     if (existing) { cleanup(); return res.status(409).json({ error: 'school already marked visited' }); }
 
     const rel = (f) => path.relative(UPLOAD_ROOT, f.path).split(path.sep).join('/');
+    const finalCertificateRemarks = certificateFile
+      ? certificateRemarks
+      : (certificateRemarks || 'Certificate not received but tables delivered');
     try {
       db.prepare(`
-        INSERT INTO visits (udise, driver_id, checkin_lat, checkin_lon, school_photo, tables_photo, certificate_photo, submitted_by)
-        VALUES (?,?,?,?,?,?,?,?)
+        INSERT INTO visits (udise, driver_id, checkin_lat, checkin_lon, school_photo, tables_photo, certificate_photo, certificate_remarks, submitted_by)
+        VALUES (?,?,?,?,?,?,?,?,?)
       `).run(udise, req.user.id, Number.isFinite(lat) ? lat : null,
-             Number.isFinite(lon) ? lon : null, rel(schoolFile), rel(deliveryFile), rel(certificateFile), 'driver');
+             Number.isFinite(lon) ? lon : null, rel(schoolFile), rel(deliveryFile),
+             certificateFile ? rel(certificateFile) : null, finalCertificateRemarks, 'driver');
     } catch (e) {
       cleanup();
       // UNIQUE race: someone else just checked in.

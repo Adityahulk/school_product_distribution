@@ -124,9 +124,11 @@ router.post(
     };
 
     if (!driverId || !udise) { cleanup(); return res.status(400).json({ error: 'driver and school required' }); }
-    if (!schoolFile || !deliveryFile || !certificateFile) {
+    const certificateRemarks = String(req.body.certificate_remarks || '').trim();
+
+    if (!schoolFile || !deliveryFile) {
       cleanup();
-      return res.status(400).json({ error: 'all three photos are required' });
+      return res.status(400).json({ error: 'school and delivery photos are required' });
     }
 
     const driver = db.prepare('SELECT id, assigned_block FROM drivers WHERE id = ? AND deleted_at IS NULL').get(driverId);
@@ -144,11 +146,15 @@ router.post(
     if (existing) { cleanup(); return res.status(409).json({ error: 'school already marked delivered' }); }
 
     const rel = (f) => path.relative(UPLOAD_ROOT, f.path).split(path.sep).join('/');
+    const finalCertificateRemarks = certificateFile
+      ? certificateRemarks
+      : (certificateRemarks || 'Certificate not received but tables delivered');
     try {
       db.prepare(`
-        INSERT INTO visits (udise, driver_id, checkin_lat, checkin_lon, school_photo, tables_photo, certificate_photo, submitted_by)
-        VALUES (?,?,?,?,?,?,?,?)
-      `).run(udise, driverId, null, null, rel(schoolFile), rel(deliveryFile), rel(certificateFile), 'admin');
+        INSERT INTO visits (udise, driver_id, checkin_lat, checkin_lon, school_photo, tables_photo, certificate_photo, certificate_remarks, submitted_by)
+        VALUES (?,?,?,?,?,?,?,?,?)
+      `).run(udise, driverId, null, null, rel(schoolFile), rel(deliveryFile),
+             certificateFile ? rel(certificateFile) : null, finalCertificateRemarks, 'admin');
       db.prepare('DELETE FROM school_holds WHERE udise = ?').run(udise);
     } catch (e) {
       cleanup();
@@ -157,6 +163,30 @@ router.post(
     }
 
     res.json({ ok: true, udise });
+  }
+);
+
+router.post(
+  '/visits/:id/certificate',
+  requireAdmin,
+  upload.single('certificate_photo'),
+  (req, res) => {
+    const id = parseInt(req.params.id, 10);
+    const visit = db.prepare('SELECT id FROM visits WHERE id = ?').get(id);
+    if (!visit) {
+      if (req.file) require('fs').unlink(req.file.path, () => {});
+      return res.status(404).json({ error: 'delivery not found' });
+    }
+    const remarks = String(req.body.certificate_remarks || '').trim();
+    if (!req.file && !remarks) return res.status(400).json({ error: 'certificate photo or remarks required' });
+    const rel = req.file ? path.relative(UPLOAD_ROOT, req.file.path).split(path.sep).join('/') : null;
+    if (req.file) {
+      db.prepare('UPDATE visits SET certificate_photo = ?, certificate_remarks = ? WHERE id = ?')
+        .run(rel, remarks, id);
+    } else {
+      db.prepare('UPDATE visits SET certificate_remarks = ? WHERE id = ?').run(remarks, id);
+    }
+    res.json({ ok: true });
   }
 );
 
@@ -229,7 +259,7 @@ router.get('/overview', requireAdmin, (req, res) => {
 router.get('/visits', requireAdmin, (req, res) => {
   const rows = db.prepare(`
     SELECT v.id, v.udise, v.checkin_lat, v.checkin_lon, v.checkin_time,
-           v.school_photo, v.tables_photo, v.certificate_photo, v.submitted_by,
+           v.school_photo, v.tables_photo, v.certificate_photo, v.certificate_remarks, v.submitted_by,
            sc.name AS school_name, sc.block, sc.lat AS school_lat, sc.lon AS school_lon,
            d.username AS driver_username, d.name AS driver_name, d.id AS driver_id
     FROM visits v

@@ -49,8 +49,10 @@
           <input type="file" name="school_photo" accept="image/*" required />
           <label>Delivery photo</label>
           <input type="file" name="delivery_photo" accept="image/*" required />
-          <label>Certificate photo</label>
-          <input type="file" name="certificate_photo" accept="image/*" required />
+          <label>Certificate photo (optional)</label>
+          <input type="file" name="certificate_photo" accept="image/*" />
+          <label>Certificate remarks</label>
+          <textarea name="certificate_remarks" rows="3" placeholder="Certificate not received but tables delivered"></textarea>
           <div style="height:8px"></div>
           <button type="submit" class="green" id="manualAdminSubmit" style="width:100%">Complete for driver</button>
           <p class="err" id="manualAdminErr"></p>
@@ -101,6 +103,15 @@
       <img id="mDelivery" alt="delivery" />
       <div class="muted" style="margin-top:10px">Certificate photo</div>
       <img id="mCertificate" alt="certificate" />
+      <p class="muted" id="mCertificateRemarks"></p>
+      <form id="certificateUploadForm">
+        <label>Upload / update certificate</label>
+        <input type="file" name="certificate_photo" accept="image/*" />
+        <label>Certificate remarks</label>
+        <textarea name="certificate_remarks" id="certificateUploadRemarks" rows="3"></textarea>
+        <p class="err" id="certificateUploadErr"></p>
+        <button type="submit" class="green" id="certificateUploadSubmit" style="width:100%">Save certificate</button>
+      </form>
       <div style="height:12px"></div>
       <button class="secondary" id="mClose" style="width:100%">Close</button>
     </div>

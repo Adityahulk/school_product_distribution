@@ -43,7 +43,8 @@ db.exec(`
     checkin_time TEXT NOT NULL DEFAULT (datetime('now')),
     school_photo TEXT NOT NULL,
     tables_photo TEXT NOT NULL,
-    certificate_photo TEXT NOT NULL,
+    certificate_photo TEXT,
+    certificate_remarks TEXT,
     submitted_by TEXT NOT NULL DEFAULT 'driver'
   );
 
@@ -89,8 +90,45 @@ const visitColumns = db.prepare('PRAGMA table_info(visits)').all().map((c) => c.
 if (!visitColumns.includes('certificate_photo')) {
   db.exec('ALTER TABLE visits ADD COLUMN certificate_photo TEXT');
 }
+if (!visitColumns.includes('certificate_remarks')) {
+  db.exec('ALTER TABLE visits ADD COLUMN certificate_remarks TEXT');
+}
 if (!visitColumns.includes('submitted_by')) {
   db.exec("ALTER TABLE visits ADD COLUMN submitted_by TEXT NOT NULL DEFAULT 'driver'");
+}
+
+const visitInfo = db.prepare('PRAGMA table_info(visits)').all();
+const certificateInfo = visitInfo.find((c) => c.name === 'certificate_photo');
+if (certificateInfo && certificateInfo.notnull) {
+  db.exec(`
+    ALTER TABLE visits RENAME TO visits_old_cert_required;
+
+    CREATE TABLE visits (
+      id           INTEGER PRIMARY KEY AUTOINCREMENT,
+      udise        TEXT NOT NULL UNIQUE REFERENCES schools(udise),
+      driver_id    INTEGER NOT NULL REFERENCES drivers(id),
+      checkin_lat  REAL,
+      checkin_lon  REAL,
+      checkin_time TEXT NOT NULL DEFAULT (datetime('now')),
+      school_photo TEXT NOT NULL,
+      tables_photo TEXT NOT NULL,
+      certificate_photo TEXT,
+      certificate_remarks TEXT,
+      submitted_by TEXT NOT NULL DEFAULT 'driver'
+    );
+
+    INSERT INTO visits (
+      id, udise, driver_id, checkin_lat, checkin_lon, checkin_time,
+      school_photo, tables_photo, certificate_photo, certificate_remarks, submitted_by
+    )
+    SELECT
+      id, udise, driver_id, checkin_lat, checkin_lon, checkin_time,
+      school_photo, tables_photo, certificate_photo, certificate_remarks,
+      COALESCE(submitted_by, 'driver')
+    FROM visits_old_cert_required;
+
+    DROP TABLE visits_old_cert_required;
+  `);
 }
 
 // Seed the fixed school list (idempotent: insert-or-replace the canonical reference data).

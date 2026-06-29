@@ -39,6 +39,7 @@ let blocks = [];
 let adminDrivers = [];
 let adminSchools = [];
 let heldSchools = [];
+let currentVisitId = null;
 
 async function loadBlocks() {
   const res = await fetch('/api/admin/blocks');
@@ -281,15 +282,43 @@ function renderManualAdminSchools() {
 function openPhotos(udise) {
   const v = visitsByUdise[udise];
   if (!v) return;
+  currentVisitId = v.id;
   el('mTitle').textContent = v.school_name;
   el('mSub').textContent = `${v.block} · UDISE ${v.udise} · driver ${v.driver_name} · submitted by ${formatSubmittedBy(v.submitted_by)} · ${fmt(v.checkin_time)}`;
   el('mSchool').src = v.school_photo_url;
   el('mDelivery').src = v.delivery_photo_url || v.tables_photo_url;
+  el('mCertificate').style.display = v.certificate_photo_url ? 'block' : 'none';
   el('mCertificate').src = v.certificate_photo_url || '';
+  el('mCertificateRemarks').textContent = v.certificate_remarks || (v.certificate_photo_url ? '' : 'Certificate not received but tables delivered');
+  el('certificateUploadRemarks').value = v.certificate_remarks || '';
+  el('certificateUploadErr').textContent = '';
   el('modalBg').classList.add('show');
 }
 el('mClose').addEventListener('click', () => el('modalBg').classList.remove('show'));
 el('deliverySearch').addEventListener('input', renderVisitList);
+
+el('certificateUploadForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  if (!currentVisitId) return;
+  el('certificateUploadSubmit').disabled = true;
+  el('certificateUploadErr').textContent = '';
+  try {
+    const fd = new FormData(e.target);
+    const res = await fetch('/api/admin/visits/' + currentVisitId + '/certificate', { method: 'POST', body: fd });
+    const data = await res.json();
+    if (!res.ok) { el('certificateUploadErr').textContent = data.error || 'Certificate upload failed'; return; }
+    await loadVisits();
+    const updated = allVisits.find((v) => v.id === currentVisitId);
+    if (updated) {
+      visitsByUdise[updated.udise] = updated;
+      openPhotos(updated.udise);
+    }
+  } catch (err) {
+    el('certificateUploadErr').textContent = 'Upload failed — check connection.';
+  } finally {
+    el('certificateUploadSubmit').disabled = false;
+  }
+});
 
 el('addForm').addEventListener('submit', async (e) => {
   e.preventDefault();
