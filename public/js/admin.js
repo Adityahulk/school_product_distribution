@@ -87,7 +87,7 @@ function renderVisitList() {
 
   el('visitList').innerHTML = header + (visits.map((v) => `
     <div class="driver-item" style="cursor:pointer" data-udise="${v.udise}">
-      <div class="nm">${escapeHtml(v.school_name)}</div>
+      <div class="nm">${escapeHtml(v.udise)} · ${escapeHtml(v.school_name)}</div>
       <div class="sub">${escapeHtml(v.block)} · by ${escapeHtml(v.driver_name)} · submitted by ${formatSubmittedBy(v.submitted_by)} · ${fmt(v.checkin_time)}</div>
     </div>`).join('') || '<p class="muted">No deliveries yet.</p>');
 
