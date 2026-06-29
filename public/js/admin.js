@@ -61,13 +61,25 @@ async function loadVisits() {
 }
 
 function renderVisitList() {
-  const visits = selectedDriverId
+  const q = String(el('deliverySearch').value || '').trim().toLowerCase();
+  const baseVisits = selectedDriverId
     ? allVisits.filter((v) => v.driver_id === selectedDriverId)
-    : allVisits.slice(0, 30);
+    : allVisits;
+  const filteredVisits = q
+    ? baseVisits.filter((v) => [
+      v.driver_name,
+      v.driver_username,
+      v.block,
+      v.school_name,
+      v.udise,
+      v.submitted_by,
+    ].some((value) => String(value || '').toLowerCase().includes(q)))
+    : baseVisits;
+  const visits = selectedDriverId || q ? filteredVisits : filteredVisits.slice(0, 30);
   const header = selectedDriverId
     ? `<div class="driver-item">
         <div class="nm">${escapeHtml(selectedDriverName)}</div>
-        <div class="sub">${visits.length} deliveries</div>
+        <div class="sub">${filteredVisits.length} deliveries</div>
         <div style="margin-top:6px"><button class="secondary" style="padding:4px 8px;font-size:12px" data-clear-driver>Show all recent</button></div>
       </div>`
     : '';
@@ -82,6 +94,7 @@ function renderVisitList() {
   if (clear) clear.addEventListener('click', () => {
     selectedDriverId = null;
     selectedDriverName = '';
+    el('deliverySearch').value = '';
     renderVisitList();
   });
 
@@ -276,6 +289,7 @@ function openPhotos(udise) {
   el('modalBg').classList.add('show');
 }
 el('mClose').addEventListener('click', () => el('modalBg').classList.remove('show'));
+el('deliverySearch').addEventListener('input', renderVisitList);
 
 el('addForm').addEventListener('submit', async (e) => {
   e.preventDefault();
