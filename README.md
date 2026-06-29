@@ -4,7 +4,8 @@ A lightweight web app that routes drivers delivering tables to the **485 governm
 schools** of Bokaro district, Jharkhand (the schools in `Bokaro_school list.pdf`).
 
 From a driver's live GPS location it always points to the **nearest unvisited school**.
-At each school the driver checks in, uploads two photos (school + delivered tables), and
+At each school the driver checks in, uploads three photos (school name board, delivery,
+and certificate), and
 marks it delivered. The unvisited pool is **shared across all drivers** — once anyone
 delivers to a school it disappears from everyone's route. An **admin** creates driver
 logins and monitors live locations, distance covered, deliveries, and photos.
@@ -46,7 +47,7 @@ npx localtunnel --port 3000   # or: ngrok http 3000 / cloudflared tunnel
 ## Roles
 - **Admin** — fixed login from `.env`. Creates/disables drivers, resets passwords, sees
   KPIs (delivered / remaining / total), per-driver km + delivery count + live location on
-  a map, recent deliveries, and each delivery's two photos.
+  a map, recent deliveries, and each delivery's three photos.
 - **Driver** — login created by admin. Map of all schools (pending grey, delivered green,
   next target highlighted), the next nearest school with distance, a Navigate button, and
   Check-in (camera photos). Check-in unlocks within 300 m of the target.

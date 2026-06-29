@@ -42,7 +42,8 @@ db.exec(`
     checkin_lon  REAL,
     checkin_time TEXT NOT NULL DEFAULT (datetime('now')),
     school_photo TEXT NOT NULL,
-    tables_photo TEXT NOT NULL
+    tables_photo TEXT NOT NULL,
+    certificate_photo TEXT NOT NULL
   );
 
   CREATE TABLE IF NOT EXISTS driver_tracks (
@@ -72,6 +73,11 @@ if (!driverColumns.includes('can_test_mode')) {
 }
 if (!driverColumns.includes('deleted_at')) {
   db.exec('ALTER TABLE drivers ADD COLUMN deleted_at TEXT');
+}
+
+const visitColumns = db.prepare('PRAGMA table_info(visits)').all().map((c) => c.name);
+if (!visitColumns.includes('certificate_photo')) {
+  db.exec('ALTER TABLE visits ADD COLUMN certificate_photo TEXT');
 }
 
 // Seed the fixed school list (idempotent: insert-or-replace the canonical reference data).

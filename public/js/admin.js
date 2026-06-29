@@ -209,7 +209,8 @@ function openPhotos(udise) {
   el('mTitle').textContent = v.school_name;
   el('mSub').textContent = `${v.block} · delivered by ${v.driver_name} · ${fmt(v.checkin_time)}`;
   el('mSchool').src = v.school_photo_url;
-  el('mTables').src = v.tables_photo_url;
+  el('mDelivery').src = v.delivery_photo_url || v.tables_photo_url;
+  el('mCertificate').src = v.certificate_photo_url || '';
   el('modalBg').classList.add('show');
 }
 el('mClose').addEventListener('click', () => el('modalBg').classList.remove('show'));

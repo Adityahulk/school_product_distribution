@@ -35,25 +35,37 @@ const upload = multer({
 });
 
 // POST /api/checkin (multipart)
-// fields: udise, lat, lon ; files: school_photo, tables_photo
+// fields: udise, lat, lon ; files: school_photo, delivery_photo, certificate_photo
 router.post(
   '/checkin',
   requireDriver,
-  upload.fields([{ name: 'school_photo', maxCount: 1 }, { name: 'tables_photo', maxCount: 1 }]),
+  upload.fields([
+    { name: 'school_photo', maxCount: 1 },
+    { name: 'delivery_photo', maxCount: 1 },
+    { name: 'tables_photo', maxCount: 1 }, // backward-compatible alias
+    { name: 'certificate_photo', maxCount: 1 },
+  ]),
   (req, res) => {
     const { udise } = req.body;
     const testMode = req.body.test_mode === '1';
     const lat = parseFloat(req.body.lat);
     const lon = parseFloat(req.body.lon);
     const schoolFile = req.files && req.files.school_photo && req.files.school_photo[0];
-    const tablesFile = req.files && req.files.tables_photo && req.files.tables_photo[0];
+    const deliveryFile = req.files && (
+      (req.files.delivery_photo && req.files.delivery_photo[0]) ||
+      (req.files.tables_photo && req.files.tables_photo[0])
+    );
+    const certificateFile = req.files && req.files.certificate_photo && req.files.certificate_photo[0];
 
     const cleanup = () => {
-      [schoolFile, tablesFile].forEach((f) => { if (f) fs.unlink(f.path, () => {}); });
+      [schoolFile, deliveryFile, certificateFile].forEach((f) => { if (f) fs.unlink(f.path, () => {}); });
     };
 
     if (!udise) { cleanup(); return res.status(400).json({ error: 'udise required' }); }
-    if (!schoolFile || !tablesFile) { cleanup(); return res.status(400).json({ error: 'both school_photo and tables_photo are required' }); }
+    if (!schoolFile || !deliveryFile || !certificateFile) {
+      cleanup();
+      return res.status(400).json({ error: 'school_photo, delivery_photo and certificate_photo are required' });
+    }
 
     const assignedBlock = getDriverBlock(req.user.id);
     if (!assignedBlock) { cleanup(); return res.status(403).json({ error: 'driver has no assigned block' }); }
@@ -81,10 +93,10 @@ router.post(
     const rel = (f) => path.relative(UPLOAD_ROOT, f.path).split(path.sep).join('/');
     try {
       db.prepare(`
-        INSERT INTO visits (udise, driver_id, checkin_lat, checkin_lon, school_photo, tables_photo)
-        VALUES (?,?,?,?,?,?)
+        INSERT INTO visits (udise, driver_id, checkin_lat, checkin_lon, school_photo, tables_photo, certificate_photo)
+        VALUES (?,?,?,?,?,?,?)
       `).run(udise, req.user.id, Number.isFinite(lat) ? lat : null,
-             Number.isFinite(lon) ? lon : null, rel(schoolFile), rel(tablesFile));
+             Number.isFinite(lon) ? lon : null, rel(schoolFile), rel(deliveryFile), rel(certificateFile));
     } catch (e) {
       cleanup();
       // UNIQUE race: someone else just checked in.

@@ -124,7 +124,7 @@ router.get('/overview', requireAdmin, (req, res) => {
 router.get('/visits', requireAdmin, (req, res) => {
   const rows = db.prepare(`
     SELECT v.id, v.udise, v.checkin_lat, v.checkin_lon, v.checkin_time,
-           v.school_photo, v.tables_photo,
+           v.school_photo, v.tables_photo, v.certificate_photo,
            sc.name AS school_name, sc.block, sc.lat AS school_lat, sc.lon AS school_lon,
            d.username AS driver_username, d.name AS driver_name, d.id AS driver_id
     FROM visits v
@@ -134,7 +134,9 @@ router.get('/visits', requireAdmin, (req, res) => {
   `).all();
   for (const r of rows) {
     r.school_photo_url = '/uploads/' + r.school_photo;
-    r.tables_photo_url = '/uploads/' + r.tables_photo;
+    r.delivery_photo_url = '/uploads/' + r.tables_photo;
+    r.tables_photo_url = r.delivery_photo_url;
+    r.certificate_photo_url = r.certificate_photo ? '/uploads/' + r.certificate_photo : null;
   }
   res.json({ visits: rows });
 });
