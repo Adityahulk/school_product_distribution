@@ -10,6 +10,7 @@ const { getDriverBlock } = require('../lib/blocks');
 
 const router = express.Router();
 const UPLOAD_ROOT = path.join(__dirname, '..', 'uploads');
+const MAX_PHOTO_SIZE = 30 * 1024 * 1024;
 
 const storage = multer.diskStorage({
   destination(req, file, cb) {
@@ -27,7 +28,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({
   storage,
-  limits: { fileSize: 12 * 1024 * 1024 },
+  limits: { fileSize: MAX_PHOTO_SIZE },
   fileFilter(req, file, cb) {
     if (/^image\//.test(file.mimetype)) cb(null, true);
     else cb(new Error('only image uploads are allowed'));

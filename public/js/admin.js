@@ -48,6 +48,10 @@ async function loadBlocks() {
   blocks = data.blocks || [];
   el('dBlock').innerHTML = '<option value="">Select block</option>' +
     blocks.map((b) => `<option value="${escapeHtml(b)}">${escapeHtml(b)}</option>`).join('');
+  const selectedReportBlock = el('reportBlock').value;
+  el('reportBlock').innerHTML = '<option value="">All blocks</option>' +
+    blocks.map((b) => `<option value="${escapeHtml(b)}">${escapeHtml(b)}</option>`).join('');
+  el('reportBlock').value = selectedReportBlock;
 }
 
 async function loadVisits() {
@@ -296,6 +300,14 @@ function openPhotos(udise) {
 }
 el('mClose').addEventListener('click', () => el('modalBg').classList.remove('show'));
 el('deliverySearch').addEventListener('input', renderVisitList);
+el('downloadReport').addEventListener('click', () => {
+  const params = new URLSearchParams();
+  if (el('reportBlock').value) params.set('block', el('reportBlock').value);
+  if (el('reportFrom').value) params.set('date_from', el('reportFrom').value);
+  if (el('reportTo').value) params.set('date_to', el('reportTo').value);
+  const qs = params.toString();
+  window.location.href = '/api/admin/report/deliveries.csv' + (qs ? `?${qs}` : '');
+});
 
 el('certificateUploadForm').addEventListener('submit', async (e) => {
   e.preventDefault();

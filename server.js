@@ -62,6 +62,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Multer / generic error handler -> JSON.
 app.use((err, req, res, next) => {
   console.error(err);
+  if (err && err.code === 'LIMIT_FILE_SIZE') {
+    return res.status(400).json({ error: 'Photo is too large. Please upload a photo up to 30 MB.' });
+  }
   res.status(400).json({ error: err.message || 'request failed' });
 });
 

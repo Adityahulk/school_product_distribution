@@ -16,6 +16,7 @@ const confirm = process.argv.includes('--confirm');
 
 const before = {
   visits: count('visits'),
+  heldSchools: count('school_holds'),
   tracks: count('driver_tracks'),
   distances: count('driver_distance'),
   activeDrivers: db.prepare(`
@@ -55,6 +56,7 @@ const tx = db.transaction(() => {
     `).run(now, `${d.username}__deleted_${d.id}`, d.id);
   }
   db.prepare('DELETE FROM visits').run();
+  db.prepare('DELETE FROM school_holds').run();
   db.prepare('DELETE FROM driver_tracks').run();
   db.prepare('DELETE FROM driver_distance').run();
 });
@@ -75,6 +77,7 @@ console.log(JSON.stringify({
   clearedUploads,
   after: {
     visits: count('visits'),
+    heldSchools: count('school_holds'),
     tracks: count('driver_tracks'),
     distances: count('driver_distance'),
     activeDrivers: db.prepare(`

@@ -108,6 +108,8 @@ label.check-row {
 .driver-item .nm { font-weight: 700; }
 .driver-item .sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
 .driver-name { cursor: pointer; text-decoration: underline; text-decoration-style: dotted; text-underline-offset: 3px; }
+.report-filters { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.report-filters button { grid-column: 1 / -1; }
 .thumb-row { display: flex; gap: 8px; margin-top: 8px; }
 .thumb-row img { width: 72px; height: 54px; object-fit: cover; border-radius: 8px; border: 1px solid var(--line); background: var(--bg); }
 .pill { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 999px; background: var(--line); color: var(--txt); }

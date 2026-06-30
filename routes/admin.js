@@ -10,6 +10,7 @@ const { listBlocks, isValidBlock } = require('../lib/blocks');
 
 const router = express.Router();
 const UPLOAD_ROOT = path.join(__dirname, '..', 'uploads');
+const MAX_PHOTO_SIZE = 30 * 1024 * 1024;
 
 const storage = multer.diskStorage({
   destination(req, file, cb) {
@@ -27,7 +28,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({
   storage,
-  limits: { fileSize: 12 * 1024 * 1024 },
+  limits: { fileSize: MAX_PHOTO_SIZE },
   fileFilter(req, file, cb) {
     if (/^image\//.test(file.mimetype)) cb(null, true);
     else cb(new Error('only image uploads are allowed'));
@@ -275,5 +276,85 @@ router.get('/visits', requireAdmin, (req, res) => {
   }
   res.json({ visits: rows });
 });
+
+router.get('/report/deliveries.csv', requireAdmin, (req, res) => {
+  const { date_from: dateFrom, date_to: dateTo, block } = req.query || {};
+  const where = [];
+  const params = {};
+
+  if (block) {
+    if (!isValidBlock(block)) return res.status(400).json({ error: 'unknown block' });
+    where.push('sc.block = @block');
+    params.block = block;
+  }
+  if (dateFrom) {
+    where.push("(v.id IS NULL OR date(v.checkin_time, 'localtime') >= date(@dateFrom))");
+    params.dateFrom = dateFrom;
+  }
+  if (dateTo) {
+    where.push("(v.id IS NULL OR date(v.checkin_time, 'localtime') <= date(@dateTo))");
+    params.dateTo = dateTo;
+  }
+
+  const rows = db.prepare(`
+    SELECT sc.udise, sc.name AS school_name, sc.block,
+           CASE WHEN v.id IS NULL THEN 'not delivered' ELSE 'delivered' END AS status,
+           v.checkin_time, v.school_photo, v.tables_photo, v.certificate_photo,
+           v.certificate_remarks, v.submitted_by,
+           d.name AS driver_name, d.username AS driver_username,
+           h.remarks AS hold_remarks, h.created_at AS hold_created_at
+    FROM schools sc
+    LEFT JOIN visits v ON v.udise = sc.udise
+    LEFT JOIN drivers d ON d.id = v.driver_id
+    LEFT JOIN school_holds h ON h.udise = sc.udise
+    ${where.length ? `WHERE ${where.join(' AND ')}` : ''}
+    ORDER BY sc.block, sc.name
+  `).all(params);
+
+  const uploadUrl = (file) => file ? `${req.protocol}://${req.get('host')}/uploads/${file}` : '';
+  const csvRows = [[
+    'UDISE',
+    'School Name',
+    'Block',
+    'Status',
+    'Delivery Date',
+    'Shared By',
+    'Driver Name',
+    'Driver Username',
+    'School Name Board Photo',
+    'Delivery Photo',
+    'Certificate Photo',
+    'Certificate Remarks',
+    'Closed / Toggle Off Remarks',
+  ]];
+
+  for (const r of rows) {
+    csvRows.push([
+      r.udise,
+      r.school_name,
+      r.block,
+      r.hold_created_at && !r.checkin_time ? 'not delivered - toggled off' : r.status,
+      r.checkin_time || '',
+      r.submitted_by || '',
+      r.driver_name || '',
+      r.driver_username || '',
+      uploadUrl(r.school_photo),
+      uploadUrl(r.tables_photo),
+      uploadUrl(r.certificate_photo),
+      r.certificate_remarks || '',
+      r.hold_remarks || '',
+    ]);
+  }
+
+  const stamp = new Date().toISOString().slice(0, 10);
+  res.setHeader('Content-Type', 'text/csv; charset=utf-8');
+  res.setHeader('Content-Disposition', `attachment; filename="delivery-report-${stamp}.csv"`);
+  res.send(csvRows.map((row) => row.map(csvCell).join(',')).join('\n'));
+});
+
+function csvCell(value) {
+  const s = String(value == null ? '' : value);
+  return /[",\n\r]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
+}
 
 module.exports = router;

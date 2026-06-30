@@ -84,6 +84,15 @@
 
       <details class="admin-section">
         <summary>Deliveries</summary>
+        <div class="report-filters">
+          <select id="reportBlock">
+            <option value="">All blocks</option>
+          </select>
+          <input id="reportFrom" type="date" aria-label="Report from date" />
+          <input id="reportTo" type="date" aria-label="Report to date" />
+          <button class="secondary" id="downloadReport" type="button">Download report</button>
+        </div>
+        <div style="height:8px"></div>
         <input id="deliverySearch" placeholder="Search driver, block, school or UDISE" autocomplete="off" />
         <div style="height:8px"></div>
         <div id="visitList"></div>
