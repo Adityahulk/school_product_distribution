@@ -927,6 +927,30 @@
 "tables": 4,
 "chairs": 4
 },
+"20130702204": {
+"no": 961,
+"block": "JARIDIH",
+"name": "UPG P S BADKABAN",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130701004": {
+"no": 962,
+"block": "JARIDIH",
+"name": "UPG P S BAGJOBRA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
+"20130700503": {
+"no": 963,
+"block": "JARIDIH",
+"name": "UPG P S BAHIYABERA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4
+},
 "20131100203": {
 "no": 117,
 "block": "PETARWAR",

@@ -1276,6 +1276,39 @@
 "lon": 86.028351
 },
 {
+"no": 961,
+"block": "JARIDIH",
+"udise": "20130702204",
+"name": "UPG P S BADKABAN",
+"category": "Primary",
+"tables": 4,
+"chairs": 4,
+"lat": 23.643343,
+"lon": 85.943601
+},
+{
+"no": 962,
+"block": "JARIDIH",
+"udise": "20130701004",
+"name": "UPG P S BAGJOBRA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4,
+"lat": 23.534265,
+"lon": 86.007029
+},
+{
+"no": 963,
+"block": "JARIDIH",
+"udise": "20130700503",
+"name": "UPG P S BAHIYABERA",
+"category": "Primary",
+"tables": 4,
+"chairs": 4,
+"lat": 23.544838,
+"lon": 85.987018
+},
+{
 "no": 117,
 "block": "PETARWAR",
 "udise": "20131100203",
