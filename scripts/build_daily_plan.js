@@ -6,7 +6,7 @@ const db = require('../db');
 const { haversine } = require('../lib/geo');
 
 const GODOWN = { name: 'Godown', lat: 23.6832768, lon: 86.2106908 };
-const SCHOOLS_PER_DAY = 9;
+const SCHOOLS_PER_DRIVER_DAY = 7;
 const OUT_DIR = path.join(__dirname, '..', 'data');
 const DETAIL_FILE = path.join(OUT_DIR, 'godown_daily_delivery_plan.csv');
 const SUMMARY_FILE = path.join(OUT_DIR, 'godown_daily_delivery_plan_summary.csv');
@@ -27,9 +27,27 @@ for (const school of pending) {
   byBlock.get(school.block).push(school);
 }
 
+const driversByBlock = new Map();
+const drivers = db.prepare(`
+  SELECT id, username, name, assigned_block
+  FROM drivers
+  WHERE deleted_at IS NULL
+    AND active = 1
+    AND assigned_block IS NOT NULL
+    AND assigned_block != ''
+  ORDER BY assigned_block, id
+`).all();
+for (const driver of drivers) {
+  if (!driversByBlock.has(driver.assigned_block)) driversByBlock.set(driver.assigned_block, []);
+  driversByBlock.get(driver.assigned_block).push(driver);
+}
+
 const detailRows = [[
   'Block',
   'Day',
+  'Driver ID',
+  'Driver Name',
+  'Driver Username',
   'Stop No',
   'UDISE',
   'School Name',
@@ -46,6 +64,9 @@ const detailRows = [[
 const summaryRows = [[
   'Block',
   'Day',
+  'Driver ID',
+  'Driver Name',
+  'Driver Username',
   'Schools',
   'First School',
   'First UDISE',
@@ -58,10 +79,13 @@ const summaryRows = [[
 
 for (const [block, schools] of [...byBlock.entries()].sort(([a], [b]) => a.localeCompare(b))) {
   const remaining = schools.slice();
-  let day = 1;
+  const blockDrivers = driversByBlock.get(block) || [unassignedDriver(block)];
+  let batch = 0;
 
   while (remaining.length) {
-    const dayStops = takeGreedyDay(remaining, GODOWN, SCHOOLS_PER_DAY);
+    const driver = blockDrivers[batch % blockDrivers.length];
+    const day = Math.floor(batch / blockDrivers.length) + 1;
+    const dayStops = takeGreedyDay(remaining, GODOWN, SCHOOLS_PER_DRIVER_DAY);
     let previous = GODOWN;
     let travelMeters = 0;
     const legMeters = [];
@@ -81,6 +105,9 @@ for (const [block, schools] of [...byBlock.entries()].sort(([a], [b]) => a.local
     summaryRows.push([
       block,
       day,
+      driver.id,
+      driver.name || driver.username,
+      driver.username,
       dayStops.length,
       first ? first.name : '',
       first ? first.udise : '',
@@ -95,6 +122,9 @@ for (const [block, schools] of [...byBlock.entries()].sort(([a], [b]) => a.local
       detailRows.push([
         block,
         day,
+        driver.id,
+        driver.name || driver.username,
+        driver.username,
         idx + 1,
         stop.udise,
         stop.name,
@@ -110,7 +140,7 @@ for (const [block, schools] of [...byBlock.entries()].sort(([a], [b]) => a.local
       ]);
     });
 
-    day += 1;
+    batch += 1;
   }
 }
 
@@ -120,10 +150,10 @@ fs.writeFileSync(SUMMARY_FILE, toCsv(summaryRows));
 const totalDays = summaryRows.length - 1;
 console.log(JSON.stringify({
   godown: GODOWN,
-  schoolsPerDay: SCHOOLS_PER_DAY,
+  schoolsPerDriverDay: SCHOOLS_PER_DRIVER_DAY,
   pendingSchools: pending.length,
   blocks: byBlock.size,
-  totalDays,
+  totalDriverDays: totalDays,
   detailFile: DETAIL_FILE,
   summaryFile: SUMMARY_FILE,
 }, null, 2));
@@ -150,6 +180,14 @@ function takeGreedyDay(remaining, start, limit) {
 
 function mapsLink(stop) {
   return `https://www.google.com/maps?q=${stop.lat},${stop.lon}&z=17&hl=en`;
+}
+
+function unassignedDriver(block) {
+  return {
+    id: '',
+    username: '',
+    name: `Unassigned ${block}`,
+  };
 }
 
 function km(meters) {
